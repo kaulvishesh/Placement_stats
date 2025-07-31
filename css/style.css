@@ -377,7 +377,7 @@ h3 {
     border: 1px solid var(--neutral-200);
     transition: var(--transition-normal);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     min-height: 480px;
     height: auto;
     display: flex;
@@ -392,6 +392,8 @@ h3 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    border-top-left-radius: var(--radius-2xl);
+    border-top-right-radius: var(--radius-2xl);
 }
 
 .chart-container:hover {
