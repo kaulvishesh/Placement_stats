@@ -251,6 +251,18 @@
                 Our Journey
             </a>
         </div>
+        <!-- CatGPT Footer Assistant -->
+        <section>
+            <div id="catgpt-container">
+                <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT">
+                <button id="catgpt-btn">Chat with CatGPT</button>
+            </div>
+            <div id="catgpt-chatbox" style="display:none;">
+                <div id="catgpt-messages"></div>
+                <input id="catgpt-input" placeholder="Ask something..." />
+                <button id="catgpt-send">Send</button>
+            </div>
+        </section>
     </main>
     
     <script>
@@ -287,6 +299,67 @@
         document.getElementById('nav-menu').addEventListener('click', function(event) {
             event.stopPropagation();
         });
+    </script>
+    <script>
+      // Placement Coordinator click easter egg
+      // Add a class to all placement coordinator name elements for targeting
+      // We'll select all elements with .team-title containing "Placement Coordinator"
+      // But for robustness, let's add a class to these elements
+      // (If you want, add class="placement-coordinator" to the <p class="team-title">Placement Coordinator</p> elements)
+      // For now, let's select via querySelectorAll and filter by text
+      let clickCount = 0;
+      // Find all elements with class "team-title" whose textContent includes "Placement Coordinator"
+      const pcs = Array.from(document.querySelectorAll('.team-title')).filter(
+        el => el.textContent.trim().toLowerCase() === 'placement coordinator'
+      );
+      pcs.forEach(pc => {
+        pc.classList.add('placement-coordinator');
+      });
+      const triggerText = document.querySelector('.placement-coordinator');
+      if (triggerText) {
+        triggerText.addEventListener('click', () => {
+          clickCount++;
+          if (clickCount === 5) {
+            document.getElementById('catgpt-container').style.display = 'flex';
+          }
+        });
+      }
+    </script>
+    <script>
+      // Show "Chat with CatGPT" button on cat click
+      document.getElementById('cat-avatar').addEventListener('click', () => {
+        document.getElementById('catgpt-btn').style.display = 'block';
+      });
+
+      // CatGPT Footer Assistant
+      document.getElementById('catgpt-btn').onclick = () => {
+        document.getElementById('catgpt-chatbox').style.display = 'block';
+        document.getElementById('catgpt-btn').style.display = 'none';
+      };
+
+      function appendMessage(sender, text) {
+        const m = document.createElement('div');
+        m.textContent = sender + ': ' + text;
+        document.getElementById('catgpt-messages').appendChild(m);
+      }
+
+      document.getElementById('catgpt-send').onclick = () => {
+        const input = document.getElementById('catgpt-input');
+        if (!input.value) return;
+        appendMessage('You', input.value);
+        setTimeout(() => {
+          const responses = ['meow', 'mew', 'purr', 'meow meow'];
+          const catReply = responses[Math.floor(Math.random() * responses.length)];
+          appendMessage('CatGPT', catReply);
+        }, 300);
+        input.value = '';
+      };
+
+      document.getElementById('catgpt-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          document.getElementById('catgpt-send').click();
+        }
+      });
     </script>
 
     <!-- Footer -->
