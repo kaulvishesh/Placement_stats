@@ -815,6 +815,40 @@ h3 {
     }
 }
 
+/* Recruitment Information Styles */
+.recruitment-info {
+    padding: var(--space-lg);
+}
+
+.recruitment-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recruitment-info li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--neutral-200);
+    color: var(--neutral-700);
+    line-height: 1.6;
+}
+
+.recruitment-info li:last-child {
+    border-bottom: none;
+}
+
+.recruitment-info li strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.recruitment-info li:hover {
+    background-color: var(--neutral-50);
+    padding-left: var(--space-sm);
+    transition: var(--transition-fast);
+    border-radius: var(--radius-md);
+}
+
 @media (max-width: 900px) {
     .team-member-grid {
         grid-template-columns: repeat(2, 1fr);
