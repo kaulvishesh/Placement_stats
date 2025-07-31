@@ -38,42 +38,53 @@
 			return window.chartInstances[canvasId];
 		}
 
-		// Enhanced Package Distribution Chart
+		// Enhanced Package Distribution Chart with KDE Overlay
 		createChart('packageChart', {
 			type: 'bar',
 			data: {
-				labels: ['10-15 LPA', '15-20 LPA', '20-25 LPA', '25-30 LPA', '30-35 LPA', '35+ LPA'],
+				labels: ['15-20 LPA', '20-25 LPA', '25-30 LPA', '30-35 LPA', '35+ LPA'],
 				datasets: [{
 					label: 'Number of Offers',
-					data: [2, 8, 12, 15, 8, 5],
-					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(236, 72, 153, 0.8)'
-					],
-					borderColor: [
-						'rgb(59, 130, 246)',
-						'rgb(16, 185, 129)',
-						'rgb(245, 158, 11)',
-						'rgb(239, 68, 68)',
-						'rgb(139, 92, 246)',
-						'rgb(236, 72, 153)'
-					],
+					data: [1, 6, 0, 0, 3],
+					backgroundColor: 'rgba(59, 130, 246, 0.7)',
+					borderColor: 'rgb(59, 130, 246)',
 					borderWidth: 2,
 					borderRadius: 8,
 					borderSkipped: false,
+					yAxisID: 'y'
+				}, {
+					label: 'Density Curve (KDE)',
+					type: 'line',
+					data: [0.8, 4.2, 2.8, 1.5, 0.7],
+					borderColor: 'rgb(239, 68, 68)',
+					backgroundColor: 'rgba(239, 68, 68, 0.1)',
+					borderWidth: 3,
+					fill: false,
+					tension: 0.4,
+					pointBackgroundColor: 'rgb(239, 68, 68)',
+					pointBorderColor: 'white',
+					pointBorderWidth: 2,
+					pointRadius: 5,
+					pointHoverRadius: 7,
+					yAxisID: 'y1'
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
-				resizeDelay: 0,
+				interaction: {
+					mode: 'index',
+					intersect: false,
+				},
 				plugins: {
 					legend: {
-						display: false
+						display: true,
+						position: 'top',
+						labels: {
+							usePointStyle: true,
+							font: { weight: '500' },
+							padding: 20
+						}
 					},
 					tooltip: {
 						backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -84,21 +95,48 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								return `${context.parsed.y} students placed`;
+								if (context.datasetIndex === 0) {
+									return `${context.parsed.y} students placed`;
+								} else {
+									return `Density: ${context.parsed.y.toFixed(2)}`;
+								}
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
+						type: 'linear',
+						display: true,
+						position: 'left',
 						beginAtZero: true,
 						grid: {
 							color: 'rgba(0, 0, 0, 0.05)'
 						},
 						ticks: {
-							font: {
-								weight: '500'
-							}
+							font: { weight: '500' }
+						},
+						title: {
+							display: true,
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
+					},
+					y1: {
+						type: 'linear',
+						display: true,
+						position: 'right',
+						beginAtZero: true,
+						grid: {
+							drawOnChartArea: false,
+						},
+						ticks: {
+							font: { weight: '500' }
+						},
+						title: {
+							display: true,
+							text: 'Density',
+							font: { weight: '600' }
 						}
 					},
 					x: {
@@ -106,9 +144,12 @@
 							display: false
 						},
 						ticks: {
-							font: {
-								weight: '500'
-							}
+							font: { weight: '500' }
+						},
+						title: {
+							display: true,
+							text: 'Salary Range',
+							font: { weight: '600' }
 						}
 					}
 				},
@@ -123,9 +164,9 @@
 		createChart('sectorChart', {
 			type: 'doughnut',
 			data: {
-				labels: ['Technology', 'Finance & Banking', 'Consulting', 'Analytics', 'Product Management', 'Operations'],
+				labels: ['Data Science', 'Finance & Banking', 'Cybersecurity', 'Analytics'],
 				datasets: [{
-					data: [35, 25, 15, 12, 8, 5],
+					data: [4, 3, 1, 2],
 					backgroundColor: [
 						'rgba(59, 130, 246, 0.8)',
 						'rgba(16, 185, 129, 0.8)',
@@ -187,118 +228,16 @@
 			}
 		});
 
-		// Enhanced Role-wise Salary Chart
-		createChart('salaryChart', {
-			type: 'line',
-			data: {
-				labels: ['Data Scientist', 'Product Manager', 'Consultant', 'Quant Analyst', 'Software Engineer', 'Business Analyst'],
-				datasets: [{
-					label: 'Average Package (LPA)',
-					data: [28.5, 32.2, 26.8, 38.5, 24.3, 22.1],
-					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(59, 130, 246)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 3,
-					pointRadius: 6,
-					pointHoverRadius: 8
-				}, {
-					label: 'Median Package (LPA)',
-					data: [26.0, 30.0, 24.5, 35.0, 22.0, 20.5],
-					borderColor: 'rgb(16, 185, 129)',
-					backgroundColor: 'rgba(16, 185, 129, 0.1)',
-					borderWidth: 3,
-					fill: false,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(16, 185, 129)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 3,
-					pointRadius: 6,
-					pointHoverRadius: 8
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				interaction: {
-					intersect: false,
-					mode: 'index'
-				},
-				plugins: {
-					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true,
-							pointStyle: 'circle',
-							font: {
-								size: 13,
-								weight: '500'
-							},
-							padding: 20,
-							boxWidth: 15,
-							boxHeight: 15
-						},
-						maxHeight: 80
-					},
-					tooltip: {
-						backgroundColor: 'rgba(0, 0, 0, 0.8)',
-						titleColor: 'white',
-						bodyColor: 'white',
-						borderColor: 'rgba(255, 255, 255, 0.1)',
-						borderWidth: 1,
-						cornerRadius: 8,
-						callbacks: {
-							label: function (context) {
-								return `${context.dataset.label}: ₹${context.parsed.y} LPA`;
-							}
-						}
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(0, 0, 0, 0.05)'
-						},
-						ticks: {
-							callback: function (value) {
-								return '₹' + value + ' LPA';
-							},
-							font: {
-								weight: '500'
-							}
-						}
-					},
-					x: {
-						grid: {
-							display: false
-						},
-						ticks: {
-							maxRotation: 45,
-							font: {
-								weight: '500'
-							}
-						}
-					}
-				},
-				animation: {
-					duration: 2000,
-					easing: 'easeOutQuart'
-				}
-			}
-		});
+
 
 		// Enhanced Company Chart
 		createChart('companyChart', {
-			type: 'horizontalBar',
+			type: 'bar',
 			data: {
-				labels: ['Microsoft', 'Google', 'Amazon', 'Goldman Sachs', 'McKinsey', 'Deloitte', 'JPMC', 'Wells Fargo', 'Flipkart', 'Uber'],
+				labels: ['JPMC', 'Wells Fargo', 'NetraDyne', 'RouteMatic', 'Societe Generales', 'Niveta Systems'],
 				datasets: [{
 					label: 'Number of Hires',
-					data: [8, 6, 7, 4, 3, 5, 4, 3, 4, 2],
+					data: [1, 2, 2, 1, 1, 1],
 					backgroundColor: [
 						'rgba(59, 130, 246, 0.8)',
 						'rgba(16, 185, 129, 0.8)',
@@ -378,177 +317,6 @@
 				}
 			}
 		});
-
-		// Placement Timeline Chart
-		createChart('timelineChart', {
-			type: 'line',
-			data: {
-				labels: ['Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024'],
-				datasets: [{
-					label: 'Cumulative Placements',
-					data: [5, 15, 28, 42, 58, 72, 85, 95],
-					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(59, 130, 246)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 3,
-					pointRadius: 6
-				}, {
-					label: 'Monthly Placements',
-					data: [5, 10, 13, 14, 16, 14, 13, 10],
-					borderColor: 'rgb(16, 185, 129)',
-					backgroundColor: 'rgba(16, 185, 129, 0.2)',
-					borderWidth: 2,
-					fill: false,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(16, 185, 129)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 2,
-					pointRadius: 5
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				interaction: {
-					intersect: false,
-					mode: 'index'
-				},
-				plugins: {
-					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true,
-							font: {
-								size: 13,
-								weight: '500'
-							},
-							padding: 20,
-							boxWidth: 15,
-							boxHeight: 15
-						},
-						maxHeight: 80
-					},
-					tooltip: {
-						backgroundColor: 'rgba(0, 0, 0, 0.8)',
-						titleColor: 'white',
-						bodyColor: 'white',
-						borderColor: 'rgba(255, 255, 255, 0.1)',
-						borderWidth: 1,
-						cornerRadius: 8
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(0, 0, 0, 0.05)'
-						},
-						ticks: {
-							font: {
-								weight: '500'
-							}
-						}
-					},
-					x: {
-						grid: {
-							display: false
-						},
-						ticks: {
-							font: {
-								weight: '500'
-							}
-						}
-					}
-				},
-				animation: {
-					duration: 2000,
-					easing: 'easeOutQuart'
-				}
-			}
-		});
-
-		// Geographic Distribution Chart
-		createChart('locationChart', {
-			type: 'polarArea',
-			data: {
-				labels: ['Bangalore', 'Mumbai', 'Delhi NCR', 'Hyderabad', 'Chennai', 'Pune', 'International'],
-				datasets: [{
-					data: [35, 25, 20, 8, 5, 4, 3],
-					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(236, 72, 153, 0.8)',
-						'rgba(34, 197, 94, 0.8)'
-					],
-					borderColor: [
-						'rgb(59, 130, 246)',
-						'rgb(16, 185, 129)',
-						'rgb(245, 158, 11)',
-						'rgb(239, 68, 68)',
-						'rgb(139, 92, 246)',
-						'rgb(236, 72, 153)',
-						'rgb(34, 197, 94)'
-					],
-					borderWidth: 2
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: {
-						position: 'bottom',
-						labels: {
-							usePointStyle: true,
-							font: {
-								size: 13,
-								weight: '500'
-							},
-							padding: 25,
-							boxWidth: 15,
-							boxHeight: 15
-						},
-						maxHeight: 120
-					},
-					tooltip: {
-						backgroundColor: 'rgba(0, 0, 0, 0.8)',
-						titleColor: 'white',
-						bodyColor: 'white',
-						borderColor: 'rgba(255, 255, 255, 0.1)',
-						borderWidth: 1,
-						cornerRadius: 8,
-						callbacks: {
-							label: function (context) {
-								return `${context.label}: ${context.parsed}% of placements`;
-							}
-						}
-					}
-				},
-				scales: {
-					r: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(0, 0, 0, 0.1)'
-						},
-						ticks: {
-							display: false
-						}
-					}
-				},
-				animation: {
-					duration: 2000,
-					easing: 'easeOutQuart'
-				}
-			}
-		});
-
 		// Cleanup function for charts
 		window.cleanupCharts = function () {
 			if (window.chartInstances) {
@@ -562,85 +330,30 @@
 			window.chartsInitialized = false;
 		};
 
-		// Additional Salary Analytics Charts
 
-		// Salary Distribution Curve Chart
-		createChart('salaryDistributionChart', {
-			type: 'line',
-			data: {
-				labels: ['10-15', '15-20', '20-25', '25-30', '30-35', '35-40', '40-45'],
-				datasets: [{
-					label: 'Number of Students',
-					data: [2, 8, 15, 18, 12, 6, 2],
-					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(59, 130, 246)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 3,
-					pointRadius: 6
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: { display: false },
-					tooltip: {
-						backgroundColor: 'rgba(0, 0, 0, 0.8)',
-						titleColor: 'white',
-						bodyColor: 'white',
-						borderColor: 'rgba(255, 255, 255, 0.1)',
-						borderWidth: 1,
-						cornerRadius: 8,
-						callbacks: {
-							label: function (context) {
-								return `${context.parsed.y} students in ₹${context.label} LPA range`;
-							}
-						}
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } },
-						title: { display: true, text: 'Number of Students' }
-					},
-					x: {
-						grid: { display: false },
-						ticks: { font: { weight: '500' } },
-						title: { display: true, text: 'Salary Range (LPA)' }
-					}
-				},
-				animation: { duration: 2000, easing: 'easeOutQuart' }
-			}
-		});
 
 		// Role-wise Salary Radar Chart
 		createChart('roleSalaryRadarChart', {
 			type: 'radar',
 			data: {
-				labels: ['Base Salary', 'Bonus', 'Stock Options', 'Benefits', 'Total Compensation'],
+				labels: ['Base Salary', 'Bonus', 'Stock Options', 'Total Compensation'],
 				datasets: [{
 					label: 'Data Scientist',
-					data: [28, 8, 6, 4, 46],
+					data: [22, 1, 3, 23.5],
 					borderColor: 'rgb(59, 130, 246)',
 					backgroundColor: 'rgba(59, 130, 246, 0.2)',
 					borderWidth: 2,
 					pointBackgroundColor: 'rgb(59, 130, 246)'
 				}, {
-					label: 'Product Manager',
-					data: [32, 10, 8, 5, 55],
+					label: 'Quant Analyst',
+					data: [26.5, 4, 5, 38.5],
 					borderColor: 'rgb(16, 185, 129)',
 					backgroundColor: 'rgba(16, 185, 129, 0.2)',
 					borderWidth: 2,
 					pointBackgroundColor: 'rgb(16, 185, 129)'
 				}, {
-					label: 'Consultant',
-					data: [26, 6, 2, 4, 38],
+					label: 'Data Analyst',
+					data: [18, 1, 1, 20.5],
 					borderColor: 'rgb(245, 158, 11)',
 					backgroundColor: 'rgba(245, 158, 11, 0.2)',
 					borderWidth: 2,
@@ -671,10 +384,10 @@
 		createChart('salaryTrendsChart', {
 			type: 'line',
 			data: {
-				labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+				labels: ['2023', '2024', '2025'],
 				datasets: [{
 					label: 'Average Package',
-					data: [22.5, 21.8, 23.2, 25.1, 26.8, 27.05],
+					data: [27.3, 23.3, 27.05],
 					borderColor: 'rgb(59, 130, 246)',
 					backgroundColor: 'rgba(59, 130, 246, 0.1)',
 					borderWidth: 3,
@@ -682,7 +395,7 @@
 					tension: 0.4
 				}, {
 					label: 'Median Package',
-					data: [20.0, 19.5, 21.0, 22.5, 23.8, 24.0],
+					data: [28.8, 20, 24.0],
 					borderColor: 'rgb(16, 185, 129)',
 					borderWidth: 3,
 					fill: false,
@@ -710,58 +423,6 @@
 					x: {
 						grid: { display: false },
 						ticks: { font: { weight: '500' } }
-					}
-				},
-				animation: { duration: 2000, easing: 'easeOutQuart' }
-			}
-		});
-
-		// Location-based Salary Chart
-		createChart('locationSalaryChart', {
-			type: 'bar',
-			data: {
-				labels: ['Bangalore', 'Mumbai', 'Delhi NCR', 'Hyderabad', 'Chennai', 'International'],
-				datasets: [{
-					label: 'Average Package (LPA)',
-					data: [28.5, 32.1, 30.8, 26.2, 25.8, 42.3],
-					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(34, 197, 94, 0.8)'
-					],
-					borderColor: [
-						'rgb(59, 130, 246)',
-						'rgb(16, 185, 129)',
-						'rgb(245, 158, 11)',
-						'rgb(239, 68, 68)',
-						'rgb(139, 92, 246)',
-						'rgb(34, 197, 94)'
-					],
-					borderWidth: 2,
-					borderRadius: 8
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: { display: false }
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: {
-							callback: function (value) { return '₹' + value + ' LPA'; },
-							font: { weight: '500' }
-						}
-					},
-					x: {
-						grid: { display: false },
-						ticks: { maxRotation: 45, font: { weight: '500' } }
 					}
 				},
 				animation: { duration: 2000, easing: 'easeOutQuart' }
