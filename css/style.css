@@ -346,6 +346,15 @@ h3 {
     margin-bottom: var(--space-sm);
 }
 
+/* Prevent email overflow in stat-card */
+.stat-card .stat-value {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    font-size: 1.1rem;
+    max-width: 100%;
+}
+
 .stat-description {
     color: var(--neutral-500);
     font-size: 0.875rem;
@@ -368,7 +377,7 @@ h3 {
     border: 1px solid var(--neutral-200);
     transition: var(--transition-normal);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     min-height: 480px;
     height: auto;
     display: flex;
@@ -383,6 +392,8 @@ h3 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    border-top-left-radius: var(--radius-2xl);
+    border-top-right-radius: var(--radius-2xl);
 }
 
 .chart-container:hover {
@@ -716,10 +727,9 @@ h3 {
 /* Team Member Styles */
 .team-member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
 }
 
 .team-member {
@@ -779,6 +789,13 @@ h3 {
     margin: 0;
 }
 
+/* Center department chair grid */
+.team-member-grid.chair-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
 /* Responsive adjustments for team members */
 @media (max-width: 768px) {
     .team-member-grid {
@@ -793,6 +810,18 @@ h3 {
 
     .team-member {
         padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 900px) {
+    .team-member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-member-grid {
+        grid-template-columns: 1fr;
     }
 }
 
