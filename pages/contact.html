@@ -9,8 +9,8 @@
 </head>
 <body>
     <nav>
-        <div class="logo">
-            <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:48px;">
+        <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">
+            <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:56px;">
             <span>Department of Management Studies, IISc</span>
         </div>
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
@@ -81,7 +81,7 @@
                         <img src="../assets/photos/Ujjwal.jpeg" alt="Placement Coordinator 1" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Ujjwal Gahoi</h3>
+                        <h3>Ujjawal Gahoi</h3>
                         <p class="team-title">Placement Coordinator</p>
                         <p class="team-description">ujjawalgahoi@iisc.ac.in</p>
                     </div>
@@ -253,9 +253,9 @@
         </div>
         <!-- CatGPT Footer Assistant -->
         <section>
-            <div id="catgpt-container">
-                <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT">
-                <button id="catgpt-btn">Chat with CatGPT</button>
+            <div id="catgpt-container" style="display: none; align-items: center; gap: 10px;">
+                <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT" style="height: 80px;">
+                <button id="catgpt-btn" style="display: none;">Chat with Chintu</button>
             </div>
             <div id="catgpt-chatbox" style="display:none;">
                 <div id="catgpt-messages"></div>
@@ -299,14 +299,10 @@
         document.getElementById('nav-menu').addEventListener('click', function(event) {
             event.stopPropagation();
         });
+
     </script>
     <script>
       // Placement Coordinator click easter egg
-      // Add a class to all placement coordinator name elements for targeting
-      // We'll select all elements with .team-title containing "Placement Coordinator"
-      // But for robustness, let's add a class to these elements
-      // (If you want, add class="placement-coordinator" to the <p class="team-title">Placement Coordinator</p> elements)
-      // For now, let's select via querySelectorAll and filter by text
       let clickCount = 0;
       // Find all elements with class "team-title" whose textContent includes "Placement Coordinator"
       const pcs = Array.from(document.querySelectorAll('.team-title')).filter(
@@ -350,7 +346,7 @@
         setTimeout(() => {
           const responses = ['meow', 'mew', 'purr', 'meow meow'];
           const catReply = responses[Math.floor(Math.random() * responses.length)];
-          appendMessage('CatGPT', catReply);
+          appendMessage('Chintu', catReply);
         }, 300);
         input.value = '';
       };
@@ -361,7 +357,6 @@
         }
       });
     </script>
-
     <!-- Footer -->
     <footer style="background: var(--primary-blue); color: white; padding: var(--space-lg) var(--space-md); margin-top: var(--space-2xl);">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">

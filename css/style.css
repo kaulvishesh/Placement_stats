@@ -379,7 +379,6 @@ h3 {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden; /* Changed from visible to hidden for correct clipping */
-    overflow: hidden; /* Changed from visible to hidden for correct clipping */
     min-height: 480px;
     height: auto;
     display: flex;
@@ -394,7 +393,6 @@ h3 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-    /* Added to make the green line match the container's rounded corners */
     /* Added to make the green line match the container's rounded corners */
     border-top-left-radius: var(--radius-2xl);
     border-top-right-radius: var(--radius-2xl);
@@ -882,6 +880,7 @@ h3 {
     }
 }
 
+
 /* New responsive rules for very small screens */
 @media (max-width: 480px) {
     body {
@@ -943,7 +942,8 @@ h3 {
     .team-title {
         font-size: 0.875rem;
     }
-}
+
+/* CATGPT */
 
 #catgpt-container {
   position: fixed;
@@ -1002,4 +1002,5 @@ h3 {
   color: white;
   border: none;
   cursor: pointer;
+
 }
