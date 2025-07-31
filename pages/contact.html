@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - IISc DoMS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:48px;">
+            <span>Department of Management Studies, IISc</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="nav-menu">
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
+            <li><a href="companies.html"><i class="fas fa-building"></i> Companies</a></li>
+            <li><a href="sectors.html"><i class="fas fa-industry"></i> Sectors</a></li>
+            <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>Contact Us</h1>
+        
+        <!-- Key Contact Information -->
+        <div class="overview">
+            <div class="stat-card animate-fade-in-up">
+                <h3><i class="fas fa-users"></i> Placement Team</h3>
+                <div class="stat-value">5 Members</div>
+                <div class="stat-description">Chair + 4 Coordinators</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h3><i class="fas fa-envelope"></i> Recruiters Email</h3>
+                <div class="stat-value">placement.mgmt@iisc.ac.in</div>
+                <div class="stat-description">Direct contact</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h3><i class="fas fa-clock"></i> Response Time</h3>
+                <div class="stat-value">2-3 Days</div>
+                <div class="stat-description">Business days</div>
+            </div>
+        </div>
+
+        <!-- Department Chair -->
+        <div style="margin-top: var(--space-2xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-crown" style="color: var(--primary-blue);"></i>
+                Department Chair
+            </h2>
+
+            <div class="team-member-grid">
+                <div class="team-member animate-fade-in-up">
+                    <div class="team-photo">
+                        <img src="../assets/photos/chair.jpg" alt="Department Chair" onerror="this.src='../assets/photos/placeholder.jpg'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. [Chair Name]</h3>
+                        <p class="team-title">Department Chair</p>
+                        <p class="team-description">Leading the Department of Management Studies with vision and excellence in management education and research.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placement Coordinators -->
+        <div style="margin-top: var(--space-2xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-users" style="color: var(--primary-blue);"></i>
+                Placement Coordinators
+            </h2>
+
+            <div class="team-member-grid">
+                <div class="team-member animate-fade-in-up">
+                    <div class="team-photo">
+                        <img src="../assets/photos/coordinator1.jpg" alt="Placement Coordinator 1" onerror="this.src='../assets/photos/placeholder.jpg'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. [Name 1]</h3>
+                        <p class="team-title">Placement Coordinator</p>
+                        <p class="team-description">Specializing in corporate relations and student career development.</p>
+                    </div>
+                </div>
+
+                <div class="team-member animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="team-photo">
+                        <img src="../assets/photos/coordinator2.jpg" alt="Placement Coordinator 2" onerror="this.src='../assets/photos/placeholder.jpg'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. [Name 2]</h3>
+                        <p class="team-title">Placement Coordinator</p>
+                        <p class="team-description">Expert in industry partnerships and recruitment strategy.</p>
+                    </div>
+                </div>
+
+                <div class="team-member animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="team-photo">
+                        <img src="../assets/photos/coordinator3.jpg" alt="Placement Coordinator 3" onerror="this.src='../assets/photos/placeholder.jpg'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. [Name 3]</h3>
+                        <p class="team-title">Placement Coordinator</p>
+                        <p class="team-description">Focused on student mentoring and career guidance.</p>
+                    </div>
+                </div>
+
+                <div class="team-member animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="team-photo">
+                        <img src="../assets/photos/coordinator4.jpg" alt="Placement Coordinator 4" onerror="this.src='../assets/photos/placeholder.jpg'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. [Name 4]</h3>
+                        <p class="team-title">Placement Coordinator</p>
+                        <p class="team-description">Specializing in alumni relations and industry outreach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form and Information -->
+        <div class="charts-grid">
+            <div class="chart-container animate-fade-in-up">
+                <h2><i class="fas fa-envelope"></i> For Recruiters</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3><i class="fas fa-envelope"></i> Primary Contact</h3>
+                        <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary-blue);">
+                            <a href="mailto:placement.mgmt@iisc.ac.in" class="contact-link">placement.mgmt@iisc.ac.in</a>
+                        </p>
+                        <p>Please use this email for all recruitment-related inquiries, campus visit requests, and placement coordination.</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3><i class="fas fa-handshake"></i> What to Include</h3>
+                        <ul style="color: var(--neutral-600); line-height: 1.6;">
+                            <li>Company name and brief description</li>
+                            <li>Job roles and requirements</li>
+                            <li>Preferred recruitment dates</li>
+                            <li>Compensation package details</li>
+                            <li>Contact person information</li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3><i class="fas fa-clock"></i> Response Time</h3>
+                        <p>We typically respond to recruitment inquiries within 2-3 business days. For urgent matters, please mention "URGENT" in the subject line.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h2><i class="fas fa-map-marker-alt"></i> Visit Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3><i class="fas fa-building"></i> Address</h3>
+                        <p>Department of Management Studies<br>
+                        Indian Institute of Science<br>
+                        Bangalore - 560012<br>
+                        Karnataka, India</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3><i class="fas fa-clock"></i> Office Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 5:00 PM<br>
+                        Saturday: 9:00 AM - 1:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3><i class="fas fa-globe"></i> Website</h3>
+                        <p><a href="https://mgmt.iisc.ac.in" target="_blank" class="contact-link">mgmt.iisc.ac.in</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3><i class="fas fa-users"></i> For Recruiters</h3>
+                        <p>We welcome companies for campus recruitment. Please reach out to discuss opportunities and schedule visits.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h2><i class="fas fa-calendar-alt"></i> Recruitment Timeline</h2>
+                <div class="timeline-info">
+                    <div class="timeline-item-contact">
+                        <h4>Pre-Placement Talks</h4>
+                        <p>August - September</p>
+                        <span>Company presentations to students</span>
+                    </div>
+                    <div class="timeline-item-contact">
+                        <h4>Campus Recruitment</h4>
+                        <p>October - February</p>
+                        <span>Main placement season</span>
+                    </div>
+                    <div class="timeline-item-contact">
+                        <h4>Summer Internships</h4>
+                        <p>March - April</p>
+                        <span>Internship placements</span>
+                    </div>
+                    <div class="timeline-item-contact">
+                        <h4>Lateral Placements</h4>
+                        <p>Year Round</p>
+                        <span>Ongoing opportunities</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h2><i class="fas fa-handshake"></i> Why Recruit from IISc DoMS?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Top Talent</h4>
+                        <p>Highly qualified students with strong analytical and leadership skills</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Diverse Skills</h4>
+                        <p>Students with backgrounds in engineering, science, and management</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Innovation</h4>
+                        <p>Research-oriented mindset with practical business acumen</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-globe"></i>
+                        <h4>Global Perspective</h4>
+                        <p>International exposure and multicultural understanding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
+            <a href="../index.html" class="btn btn-primary">
+                <i class="fas fa-home"></i>
+                Back to Home
+            </a>
+            <a href="companies.html" class="btn btn-secondary">
+                <i class="fas fa-building"></i>
+                Company Insights
+            </a>
+            <a href="../landing_page.html" class="btn btn-secondary">
+                <i class="fas fa-history"></i>
+                Our Journey
+            </a>
+        </div>
+    </main>
+    
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            menu.classList.toggle('mobile-menu-open');
+            
+            // Update toggle button icon
+            const icon = toggle.querySelector('i');
+            if (menu.classList.contains('mobile-menu-open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Close mobile menu when clicking outside or on a link
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            // Close menu if clicking outside nav or on a nav link
+            if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
+                menu.classList.remove('mobile-menu-open');
+                const icon = toggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Prevent menu from closing when clicking on the menu itself
+        document.getElementById('nav-menu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+
+    </script>
+</body>
+</html>

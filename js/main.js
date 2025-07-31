@@ -562,6 +562,212 @@
 			window.chartsInitialized = false;
 		};
 
+		// Additional Salary Analytics Charts
+
+		// Salary Distribution Curve Chart
+		createChart('salaryDistributionChart', {
+			type: 'line',
+			data: {
+				labels: ['10-15', '15-20', '20-25', '25-30', '30-35', '35-40', '40-45'],
+				datasets: [{
+					label: 'Number of Students',
+					data: [2, 8, 15, 18, 12, 6, 2],
+					borderColor: 'rgb(59, 130, 246)',
+					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 3,
+					fill: true,
+					tension: 0.4,
+					pointBackgroundColor: 'rgb(59, 130, 246)',
+					pointBorderColor: 'white',
+					pointBorderWidth: 3,
+					pointRadius: 6
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: { display: false },
+					tooltip: {
+						backgroundColor: 'rgba(0, 0, 0, 0.8)',
+						titleColor: 'white',
+						bodyColor: 'white',
+						borderColor: 'rgba(255, 255, 255, 0.1)',
+						borderWidth: 1,
+						cornerRadius: 8,
+						callbacks: {
+							label: function (context) {
+								return `${context.parsed.y} students in ₹${context.label} LPA range`;
+							}
+						}
+					}
+				},
+				scales: {
+					y: {
+						beginAtZero: true,
+						grid: { color: 'rgba(0, 0, 0, 0.05)' },
+						ticks: { font: { weight: '500' } },
+						title: { display: true, text: 'Number of Students' }
+					},
+					x: {
+						grid: { display: false },
+						ticks: { font: { weight: '500' } },
+						title: { display: true, text: 'Salary Range (LPA)' }
+					}
+				},
+				animation: { duration: 2000, easing: 'easeOutQuart' }
+			}
+		});
+
+		// Role-wise Salary Radar Chart
+		createChart('roleSalaryRadarChart', {
+			type: 'radar',
+			data: {
+				labels: ['Base Salary', 'Bonus', 'Stock Options', 'Benefits', 'Total Compensation'],
+				datasets: [{
+					label: 'Data Scientist',
+					data: [28, 8, 6, 4, 46],
+					borderColor: 'rgb(59, 130, 246)',
+					backgroundColor: 'rgba(59, 130, 246, 0.2)',
+					borderWidth: 2,
+					pointBackgroundColor: 'rgb(59, 130, 246)'
+				}, {
+					label: 'Product Manager',
+					data: [32, 10, 8, 5, 55],
+					borderColor: 'rgb(16, 185, 129)',
+					backgroundColor: 'rgba(16, 185, 129, 0.2)',
+					borderWidth: 2,
+					pointBackgroundColor: 'rgb(16, 185, 129)'
+				}, {
+					label: 'Consultant',
+					data: [26, 6, 2, 4, 38],
+					borderColor: 'rgb(245, 158, 11)',
+					backgroundColor: 'rgba(245, 158, 11, 0.2)',
+					borderWidth: 2,
+					pointBackgroundColor: 'rgb(245, 158, 11)'
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						position: 'top',
+						labels: { usePointStyle: true, font: { weight: '500' } }
+					}
+				},
+				scales: {
+					r: {
+						beginAtZero: true,
+						max: 60,
+						grid: { color: 'rgba(0, 0, 0, 0.1)' }
+					}
+				},
+				animation: { duration: 2000, easing: 'easeOutQuart' }
+			}
+		});
+
+		// Salary Trends Chart
+		createChart('salaryTrendsChart', {
+			type: 'line',
+			data: {
+				labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+				datasets: [{
+					label: 'Average Package',
+					data: [22.5, 21.8, 23.2, 25.1, 26.8, 27.05],
+					borderColor: 'rgb(59, 130, 246)',
+					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 3,
+					fill: true,
+					tension: 0.4
+				}, {
+					label: 'Median Package',
+					data: [20.0, 19.5, 21.0, 22.5, 23.8, 24.0],
+					borderColor: 'rgb(16, 185, 129)',
+					borderWidth: 3,
+					fill: false,
+					tension: 0.4
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						position: 'top',
+						labels: { usePointStyle: true, font: { weight: '500' } }
+					}
+				},
+				scales: {
+					y: {
+						beginAtZero: true,
+						grid: { color: 'rgba(0, 0, 0, 0.05)' },
+						ticks: {
+							callback: function (value) { return '₹' + value + ' LPA'; },
+							font: { weight: '500' }
+						}
+					},
+					x: {
+						grid: { display: false },
+						ticks: { font: { weight: '500' } }
+					}
+				},
+				animation: { duration: 2000, easing: 'easeOutQuart' }
+			}
+		});
+
+		// Location-based Salary Chart
+		createChart('locationSalaryChart', {
+			type: 'bar',
+			data: {
+				labels: ['Bangalore', 'Mumbai', 'Delhi NCR', 'Hyderabad', 'Chennai', 'International'],
+				datasets: [{
+					label: 'Average Package (LPA)',
+					data: [28.5, 32.1, 30.8, 26.2, 25.8, 42.3],
+					backgroundColor: [
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(16, 185, 129, 0.8)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(239, 68, 68, 0.8)',
+						'rgba(139, 92, 246, 0.8)',
+						'rgba(34, 197, 94, 0.8)'
+					],
+					borderColor: [
+						'rgb(59, 130, 246)',
+						'rgb(16, 185, 129)',
+						'rgb(245, 158, 11)',
+						'rgb(239, 68, 68)',
+						'rgb(139, 92, 246)',
+						'rgb(34, 197, 94)'
+					],
+					borderWidth: 2,
+					borderRadius: 8
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: { display: false }
+				},
+				scales: {
+					y: {
+						beginAtZero: true,
+						grid: { color: 'rgba(0, 0, 0, 0.05)' },
+						ticks: {
+							callback: function (value) { return '₹' + value + ' LPA'; },
+							font: { weight: '500' }
+						}
+					},
+					x: {
+						grid: { display: false },
+						ticks: { maxRotation: 45, font: { weight: '500' } }
+					}
+				},
+				animation: { duration: 2000, easing: 'easeOutQuart' }
+			}
+		});
+
 		// Cleanup on page unload
 		window.addEventListener('beforeunload', window.cleanupCharts);
 	}
