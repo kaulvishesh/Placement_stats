@@ -1,4 +1,3 @@
-/* CATGPT */
 /* Modern CSS Reset and Base Styles */
 * {
     margin: 0;
@@ -485,6 +484,7 @@ h3 {
     transition: var(--transition-fast);
     position: relative;
     overflow: hidden;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .btn-primary {
@@ -880,7 +880,6 @@ h3 {
     }
 }
 
-
 /* New responsive rules for very small screens */
 @media (max-width: 480px) {
     body {
@@ -943,7 +942,30 @@ h3 {
         font-size: 0.875rem;
     }
 
-/* CATGPT */
+    /* Footer adjustments for smaller devices */
+    footer {
+        padding: var(--space-md) var(--space-sm) !important;
+    }
+
+    footer h3 {
+        font-size: 1rem !important;
+    }
+
+    footer p {
+        font-size: 0.75rem !important;
+    }
+    
+    /* Button group adjustments */
+    .flex.justify-center.gap-lg {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .flex.justify-center.gap-lg .btn {
+        width: 100%; /* Make buttons full width */
+    }
+}
+
 
 #catgpt-container {
   position: fixed;
@@ -1002,5 +1024,4 @@ h3 {
   color: white;
   border: none;
   cursor: pointer;
-
 }
