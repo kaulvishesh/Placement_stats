@@ -255,7 +255,7 @@
         <section>
             <div id="catgpt-container">
                 <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT">
-                <button id="catgpt-btn">Chat with CatGPT</button>
+                <button id="catgpt-btn">Chat with Chintu</button>
             </div>
             <div id="catgpt-chatbox" style="display:none;">
                 <div id="catgpt-messages"></div>
@@ -302,11 +302,6 @@
     </script>
     <script>
       // Placement Coordinator click easter egg
-      // Add a class to all placement coordinator name elements for targeting
-      // We'll select all elements with .team-title containing "Placement Coordinator"
-      // But for robustness, let's add a class to these elements
-      // (If you want, add class="placement-coordinator" to the <p class="team-title">Placement Coordinator</p> elements)
-      // For now, let's select via querySelectorAll and filter by text
       let clickCount = 0;
       // Find all elements with class "team-title" whose textContent includes "Placement Coordinator"
       const pcs = Array.from(document.querySelectorAll('.team-title')).filter(
@@ -350,7 +345,7 @@
         setTimeout(() => {
           const responses = ['meow', 'mew', 'purr', 'meow meow'];
           const catReply = responses[Math.floor(Math.random() * responses.length)];
-          appendMessage('CatGPT', catReply);
+          appendMessage('Chintu', catReply);
         }, 300);
         input.value = '';
       };
