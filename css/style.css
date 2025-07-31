@@ -346,6 +346,15 @@ h3 {
     margin-bottom: var(--space-sm);
 }
 
+/* Prevent email overflow in stat-card */
+.stat-card .stat-value {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    font-size: 1.1rem;
+    max-width: 100%;
+}
+
 .stat-description {
     color: var(--neutral-500);
     font-size: 0.875rem;
