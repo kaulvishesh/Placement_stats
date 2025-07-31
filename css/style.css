@@ -725,10 +725,9 @@ h3 {
 /* Team Member Styles */
 .team-member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
 }
 
 .team-member {
@@ -788,6 +787,13 @@ h3 {
     margin: 0;
 }
 
+/* Center department chair grid */
+.team-member-grid.chair-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
 /* Responsive adjustments for team members */
 @media (max-width: 768px) {
     .team-member-grid {
@@ -802,6 +808,18 @@ h3 {
 
     .team-member {
         padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 900px) {
+    .team-member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-member-grid {
+        grid-template-columns: 1fr;
     }
 }
 
