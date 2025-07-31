@@ -1,759 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IISc DoMS - Our Journey Through Time</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Override conflicting styles for timeline page */
-        main h1, main h2, main h3, main p, main span, main div {
-            color: inherit !important;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>IISc DoMS - Our Journey Through Time</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Timeline base style */
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      background-color: #2563eb;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      z-index: 1;
+      border-radius: 9999px;
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 1.5rem 2rem;
+      box-sizing: border-box;
+      z-index: 3;
+    }
+    .timeline-item-left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item-right {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-dot {
+      position: absolute;
+      top: 32px;
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background: white;
+      border: 5px solid #2563eb;
+      z-index: 5;
+    }
+    .timeline-item-left .timeline-dot {
+      right: -10px;
+    }
+    .timeline-item-right .timeline-dot {
+      left: -10px;
+    }
+    @media (max-width: 900px) {
+      .timeline::after {
+        left: 20px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 48px;
+        padding-right: 0;
+        text-align: left;
+        left: 0 !important;
+      }
+      .timeline-item-left,
+      .timeline-item-right {
+        left: 0 !important;
+        text-align: left;
+      }
+      .timeline-dot {
+        left: 0;
+        right: auto;
+      }
+    }
+    /* Extra highlight style */
+    .highlight {
+      background-color: #dbeafe;
+      color: #1e3a8a;
+      border-radius: 0.25rem;
+      padding: 0.25rem;
+      font-weight: 500;
+    }
 
-        /* Ensure body text has good contrast */
-        body {
-            color: #374151 !important;
-        }
+    /* Content box z-index fix */
+    .timeline-item .bg-white {
+      position: relative;
+      z-index: 4;
+    }
 
-        /* Specific fixes for timeline elements */
-        .text-blue-900 {
-            color: #1e3a8a !important;
-        }
-
-        .text-white {
-            color: white !important;
-        }
-
-        .text-blue-100 {
-            color: #dbeafe !important;
-        }
-
-        .text-yellow-300 {
-            color: #fde047 !important;
-        }
-
-        /* Header contrast fixes */
-        header .text-blue-900 {
-            color: white !important;
-        }
-
-        header h1, header h2, header p, header span {
-            color: white !important;
-        }
-
-        /* Specific fix for the main heading */
-        header h1.text-3xl {
-            color: white !important;
-        }
-
-        header .bg-white {
-            background-color: white !important;
-            color: #1e3a8a !important;
-        }
-
-        /* Override any Tailwind text color classes in header */
-        header .text-blue-900,
-        header .text-blue-800,
-        header .text-blue-700 {
-            color: white !important;
-        }
-
-        /* Force all header text to be white */
-        header * {
-            color: white !important;
-        }
-
-        /* Exception for elements that should have different colors */
-        header .bg-white * {
-            color: #1e3a8a !important;
-        }
-
-        header .text-yellow-300 {
-            color: #fde047 !important;
-        }
-
-        /* Main content heading fixes */
-        main h2.text-blue-900 {
-            color: #1e3a8a !important;
-        }
-
-        main .text-blue-900 {
-            color: #1e3a8a !important;
-        }
-
-        .timeline-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #1e40af;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-            border-radius: 10px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: white;
-            border: 4px solid #1e40af;
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::after {
-            right: -12px;
-        }
-        
-        .right::after {
-            left: -12px;
-        }
-        
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-left: 4px solid #1e40af;
-        }
-
-        .timeline-content h3 {
-            color: #1e40af !important;
-            font-weight: bold !important;
-        }
-
-        .timeline-content p {
-            color: #374151 !important;
-        }
-
-        .timeline-content .highlight {
-            color: #1e40af !important;
-        }
-
-        .timeline-content .bg-blue-100 {
-            background-color: #dbeafe !important;
-            color: #1e40af !important;
-        }
-
-        .timeline-content .text-blue-800 {
-            color: #1e40af !important;
-        }
-
-        .timeline-content .text-blue-900 {
-            color: #1e40af !important;
-        }
-
-        .timeline-content .text-gray-700 {
-            color: #374151 !important;
-        }
-
-        .timeline-content .text-gray-600 {
-            color: #4b5563 !important;
-        }
-
-        .timeline-content ul li {
-            color: #374151 !important;
-        }
-
-        /* Ensure good contrast for all timeline text */
-        .timeline-content strong {
-            color: #1e40af !important;
-        }
-
-        .timeline-content em {
-            color: #6b7280 !important;
-        }
-
-        /* Footer fixes */
-        footer {
-            background: #1e3a8a !important;
-        }
-
-        footer h3, footer p, footer a {
-            color: white !important;
-        }
-
-        footer .text-blue-200 {
-            color: #bfdbfe !important;
-        }
-
-        footer .text-blue-300 {
-            color: #93c5fd !important;
-        }
-
-        footer .text-blue-900 {
-            color: white !important;
-        }
-
-        /* Ensure all footer text is readable */
-        footer * {
-            color: white !important;
-        }
-
-        footer a:hover {
-            color: #fde047 !important;
-        }
-
-        /* Navigation fixes with better spacing */
-        nav {
-            padding: 1rem 2rem !important;
-        }
-
-        nav ul {
-            gap: 1.5rem !important; /* Increased gap between menu items */
-        }
-
-        nav ul li a {
-            color: white !important;
-            padding: 0.75rem 1.25rem !important; /* Increased padding for better touch targets */
-            margin: 0 0.25rem !important; /* Additional margin between buttons */
-            border-radius: 8px !important;
-            transition: all 0.3s ease !important;
-            min-width: 120px !important; /* Minimum width for consistent button sizes */
-            text-align: center !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 0.5rem !important; /* Space between icon and text */
-        }
-
-        nav ul li a:hover {
-            background: rgba(255,255,255,0.15) !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
-        }
-
-        nav .active {
-            background: rgba(255,255,255,0.25) !important;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-        }
-
-        /* Mobile navigation improvements */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 0 !important;
-            }
-
-            nav ul li a {
-                padding: 1rem 1.5rem !important;
-                margin: 0 !important;
-                min-width: auto !important;
-                width: 100% !important;
-                justify-content: flex-start !important;
-                border-radius: 0 !important;
-                border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-            }
-        }
-
-        /* Mobile menu toggle improvements */
-        .mobile-menu-toggle {
-            padding: 0.75rem !important;
-            margin-left: 1rem !important;
-            border-radius: 8px !important;
-            background: rgba(255,255,255,0.1) !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
-            color: white !important;
-            font-size: 1.25rem !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .mobile-menu-toggle:hover {
-            background: rgba(255,255,255,0.2) !important;
-            transform: scale(1.05) !important;
-        }
-
-        /* Logo spacing improvements */
-        .logo {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.75rem !important;
-            font-size: 1.25rem !important;
-            font-weight: 600 !important;
-        }
-
-        .logo span {
-            color: white !important;
-        }
-        
-        .right .timeline-content {
-            border-left: none;
-            border-right: 4px solid #1e40af;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item::after {
-                left: 18px;
-            }
-            
-            .left::after, .right::after {
-                left: 18px;
-            }
-            
-            .right {
-                left: 0;
-            }
-            
-            .timeline-content {
-                border-left: 4px solid #1e40af !important;
-                border-right: none !important;
-            }
-        }
-        
-        .decade-title {
-            background: linear-gradient(90deg, #1e40af, #3b82f6);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .decade-title i {
-            color: white !important;
-        }
-        
-        .highlight {
-            background-color: #dbeafe;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: 500;
-        }
-    </style>
+    /* Decade title z-index */
+    .timeline .bg-gradient-to-r {
+      position: relative;
+      z-index: 4;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Modern Navigation -->
-    <nav>
-        <div class="logo">
-            <img src="assets/logo.png" alt="IISc DMS Logo" style="height:48px;">
-            <span>Department of Management Studies, IISc</span>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navigation -->
+  <link rel="stylesheet" href="css/style.css">
+  <nav>
+    <div class="logo">
+      <img src="assets/logo.png" alt="IISc DoMS Logo" style="height:48px;">
+      <span>Department of Management Studies, IISc</span>
+    </div>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="landing_page.html" class="active"><i class="fas fa-history"></i> Our Journey</a></li>
+      <li><a href="pages/salary.html"><i class="fas fa-chart-line"></i> Salary Analytics</a></li>
+      <li><a href="pages/companies.html"><i class="fas fa-building"></i> Companies</a></li>
+      <li><a href="pages/sectors.html"><i class="fas fa-industry"></i> Sectors</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-7 px-4 shadow-lg text-center">
+    <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">Department of Management Studies</h1>
+    <h2 class="text-xl md:text-2xl font-semibold mt-2 mb-2 text-white">Indian Institute of Science, Bangalore</h2>
+    <p class="text-blue-100 italic mb-4">Setting Standards of Excellence in Management Education & Research</p>
+    <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-6">
+      <span class="text-yellow-300 font-bold">Diamond Jubilee Year Completed</span>
+      <span class="font-medium flex items-center gap-2"><span>Marching towards</span>
+        <span class="px-3 py-1 bg-white text-blue-900 rounded-full font-bold">Platinum Jubilee</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto py-10 px-4">
+    <h1 class="text-3xl font-bold text-center mb-10 text-blue-900 relative">
+      Our Journey Through Time
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-blue-200 rounded-full"></span>
+    </h1>
+
+    <div class="timeline">
+
+      <!-- 1950s -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-history mr-2"></i> 1950s - The Foundation
         </div>
-        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul id="nav-menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="landing_page.html" class="active"><i class="fas fa-history"></i> Our Journey</a></li>
-            <li><a href="pages/salary.html"><i class="fas fa-chart-line"></i> Salary Analytics</a></li>
-            <li><a href="pages/companies.html"><i class="fas fa-building"></i> Companies</a></li>
-            <li><a href="pages/sectors.html"><i class="fas fa-industry"></i> Sectors</a></li>
-        </ul>
-    </nav>
-
-    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-8 px-4 shadow-lg">
-        <div class="container mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2">Department of Management Studies</h1>
-            <h2 class="text-xl md:text-2xl font-semibold mb-4">Indian Institute of Science, Bangalore</h2>
-            <p class="text-blue-100 italic">Setting Standards of Excellence in Management Education & Research</p>
-            <div class="mt-4 flex items-center">
-                <div class="mr-4">
-                    <span class="text-yellow-300 font-bold">Diamond Jubilee Year Completed</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-white font-medium">Marching towards</span>
-                    <span class="ml-2 px-3 py-1 bg-white text-blue-900 rounded-full font-bold">Platinum Jubilee</span>
-                </div>
+      </div>
+      
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-graduation-cap"></i>
             </div>
+            <h3 class="text-lg font-bold text-blue-900">1954-55</h3>
+          </div>
+          <p>A <span class="highlight">Diploma Program (DIISc)</span> was started, designed solely for the executives of Public sector.</p>
         </div>
-    </header>
-
-    <main class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900 relative">
-            <span class="relative inline-block">
-                Our Journey Through Time
-                <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-200"></span>
-            </span>
-        </h2>
-
-        <div class="timeline-container">
-            <div class="timeline">
-                <!-- 1950s -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-history mr-2"></i> 1950s - The Foundation
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1954-55</h3>
-                        </div>
-                        <p>A <span class="highlight">Diploma Program (DIISc)</span> was started, designed solely for the executives of Public sector.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1957</h3>
-                        </div>
-                        <p>The <span class="highlight">Section of Industrial Engineering and Administration</span> was set up.</p>
-                        <p class="mt-2 text-gray-700 italic">This represents the earliest attempt at an academic program in management for India's industrial enterprises by systematically training manpower and generating knowledge.</p>
-                    </div>
-                </div>
-                
-                <!-- 1960s & 1970s -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-chart-line mr-2"></i> 1960s & 1970s - Expansion
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1960</h3>
-                        </div>
-                        <p>A <span class="highlight">research program</span> was introduced known as Master of IISc.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-sitemap"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1965</h3>
-                        </div>
-                        <p>The Section of Economics and Social Sciences and the Industrial Engineering & Administration were merged to form <span class="highlight">"Department of Industrial Management"</span>.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1967</h3>
-                        </div>
-                        <p>Introduction of <span class="highlight">one year PG Diploma</span> program.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1970s</h3>
-                        </div>
-                        <p>The Department's research was broadened to include management problems of:</p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>R&D organizations</li>
-                            <li>Sophisticated science-based industries</li>
-                            <li>Development of science policy in the country</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 1980s -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-industry mr-2"></i> 1980s - Transformation
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-landmark"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1982-1985</h3>
-                        </div>
-                        <p>Focus on national issues including:</p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>Public Sector Enterprises</li>
-                            <li>Economic Planning</li>
-                            <li>Small Scale Industries</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1985</h3>
-                        </div>
-                        <p><span class="highlight">Industrial Management was renamed</span> as Department of Management Studies.</p>
-                        <p class="mt-2">One year Diploma Program replaced by <span class="highlight">one and a half year M.Tech Program</span> in Management Studies.</p>
-                    </div>
-                </div>
-                
-                <!-- 1990s -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-globe-asia mr-2"></i> 1990s - Diversification
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1990s</h3>
-                        </div>
-                        <p>The Department research focus was broadened to include:</p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>Energy planning with bottom-up approach</li>
-                            <li>Integration of technologies of energy supply and energy efficiency</li>
-                            <li>Internalizing environmental concerns</li>
-                            <li>Rural technologies</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1990</h3>
-                        </div>
-                        <p>The <span class="highlight">Operations Research Society of India Bangalore Chapter</span> was set up and a national conference was conducted.</p>
-                        <p class="mt-2">Research program diversified by including problem solving approaches employing OR methods.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">1997</h3>
-                        </div>
-                        <p><span class="highlight">National Doctoral Consortium</span> in Management Research for students was formed.</p>
-                        <p class="mt-2">National level research conference for management research students was conducted in 1997 & 1998.</p>
-                    </div>
-                </div>
-                
-                <!-- 2000s -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-network-wired mr-2"></i> 2000s - Globalization
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-business-time"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">2000s</h3>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="highlight">MBA program</span> introduced</li>
-                            <li>Integration of <span class="highlight">Foreign Languages</span> section</li>
-                            <li>Re-introduction of National Doctoral Consortium as <span class="highlight">Consortium of Students in Management Research (COSMAR)</span> in 2001</li>
-                            <li>COSMAR Conference became an annual event</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">2000s</h3>
-                        </div>
-                        <p>Key events and collaborations:</p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>NIPM Conference</li>
-                            <li>Cyber Entrepreneurship Conference</li>
-                            <li>Expert Panel Discussions on the Union Budget</li>
-                            <li>IISc-Max Planck Institute of Economics Conference</li>
-                            <li>IISc-University of Minnesota: Technology Management Workshop</li>
-                            <li>International Collaboration with George Mason University and Pforzheim Business School</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 2010s and beyond -->
-                <div class="w-full text-center my-8">
-                    <div class="decade-title inline-block">
-                        <i class="fas fa-rocket mr-2"></i> 2010s and Beyond - Innovation
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">2010s</h3>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><span class="highlight">M.Mgt program</span> replaces the MBA program</li>
-                            <li>Specialization in <span class="highlight">Business Analytics</span> and <span class="highlight">Technology Management</span></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="flex items-center mb-2">
-                            <div class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
-                                <i class="fas fa-gem"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-blue-900">Present</h3>
-                        </div>
-                        <p>Having completed our <span class="highlight">Diamond Jubilee Year</span>, we are now marching towards our <span class="highlight">Platinum Jubilee</span> with renewed vigor and commitment to excellence in management education and research.</p>
-                    </div>
-                </div>
+      </div>
+      
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-university"></i>
             </div>
+            <h3 class="text-lg font-bold text-blue-900">1957</h3>
+          </div>
+          <p>The <span class="highlight">Section of Industrial Engineering and Administration</span> was set up.</p>
+          <p class="mt-2 text-gray-700 italic">This represents the earliest attempt at an academic program in management for India's industrial enterprises by systematically training manpower and generating knowledge.</p>
         </div>
-    </main>
+      </div>
 
-    <footer class="bg-blue-900 text-white py-8 px-4">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold mb-2">Department of Management Studies</h3>
-                    <p class="text-blue-200">Indian Institute of Science, Bangalore</p>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-white hover:text-blue-300 transition">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-300 transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-300 transition">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-300 transition">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 pt-6 border-t border-blue-800 text-center text-blue-300">
-                <p>© 2023 Department of Management Studies, IISc. All rights reserved.</p>
-            </div>
+      <!-- 1960s & 1970s -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-chart-line mr-2"></i> 1960s & 1970s - Expansion
         </div>
-    </footer>
+      </div>
 
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('nav-menu');
-            const toggle = document.querySelector('.mobile-menu-toggle');
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1960</h3>
+          </div>
+          <p>A <span class="highlight">research program</span> was introduced known as Master of IISc.</p>
+        </div>
+      </div>
 
-            menu.classList.toggle('mobile-menu-open');
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1965</h3>
+          </div>
+          <p>The Section of Economics and Social Sciences and the Industrial Engineering & Administration were merged to form <span class="highlight">Department of Industrial Management</span>.</p>
+        </div>
+      </div>
 
-            // Update toggle button icon
-            const icon = toggle.querySelector('i');
-            if (menu.classList.contains('mobile-menu-open')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
-        }
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1967</h3>
+          </div>
+          <p>Introduction of <span class="highlight">one year PG Diploma</span> program.</p>
+        </div>
+      </div>
 
-        // Close mobile menu when clicking outside or on a link
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('nav');
-            const menu = document.getElementById('nav-menu');
-            const toggle = document.querySelector('.mobile-menu-toggle');
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1970s</h3>
+          </div>
+          <p>The Department's research was broadened to include management problems of:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+            <li>R&amp;D organizations</li>
+            <li>Sophisticated science-based industries</li>
+            <li>Development of science policy in the country</li>
+          </ul>
+        </div>
+      </div>
 
-            // Close menu if clicking outside nav or on a nav link
-            if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
-                menu.classList.remove('mobile-menu-open');
-                const icon = toggle.querySelector('i');
-                icon.className = 'fas fa-bars';
-            }
-        });
+      <!-- 1980s -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-industry mr-2"></i> 1980s - Transformation
+        </div>
+      </div>
 
-        // Prevent menu from closing when clicking on the menu itself
-        document.getElementById('nav-menu').addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-landmark"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1982-1985</h3>
+          </div>
+          <p>Focus on national issues including:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+            <li>Public Sector Enterprises</li>
+            <li>Economic Planning</li>
+            <li>Small Scale Industries</li>
+          </ul>
+        </div>
+      </div>
 
-        // Animation for timeline items
-        document.addEventListener('DOMContentLoaded', function() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1985</h3>
+          </div>
+          <p><span class="highlight">Industrial Management was renamed</span> as Department of Management Studies.</p>
+          <p class="mt-2">One year Diploma Program replaced by <span class="highlight">one and a half year M.Tech Program</span> in Management Studies.</p>
+        </div>
+      </div>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+      <!-- 1990s -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-globe-asia mr-2"></i> 1990s - Diversification
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1990s</h3>
+          </div>
+          <p>The Department research focus was broadened to include:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+            <li>Energy planning with bottom-up approach</li>
+            <li>Integration of technologies of energy supply and energy efficiency</li>
+            <li>Internalizing environmental concerns</li>
+            <li>Rural technologies</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 ">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1990</h3>
+          </div>
+          <p>The <span class="highlight">Operations Research Society of India Bangalore Chapter</span> was set up and a national conference was conducted.</p>
+          <p class="mt-2">Research program diversified by including problem solving approaches employing OR methods.</p>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">1997</h3>
+          </div>
+          <p><span class="highlight">National Doctoral Consortium</span> in Management Research for students was formed.</p>
+          <p class="mt-2">National level research conference for management research students was conducted in 1997 & 1998.</p>
+        </div>
+      </div>
 
-            timelineItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(item);
-            });
-        });
-    </script>
+      <!-- 2000s -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-network-wired mr-2"></i> 2000s - Globalization
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-business-time"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">2000s</h3>
+          </div>
+          <ul class="list-disc pl-5 space-y-1 text-gray-700">
+            <li><span class="highlight">MBA program</span> introduced</li>
+            <li>Integration of <span class="highlight">Foreign Languages</span> section</li>
+            <li>Re-introduction of National Doctoral Consortium as <span class="highlight">Consortium of Students in Management Research (COSMAR)</span> in 2001</li>
+            <li>COSMAR Conference became an annual event</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">2000s</h3>
+          </div>
+          <p>Key events and collaborations:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+            <li>NIPM Conference</li>
+            <li>Cyber Entrepreneurship Conference</li>
+            <li>Expert Panel Discussions on the Union Budget</li>
+            <li>IISc-Max Planck Institute of Economics Conference</li>
+            <li>IISc-University of Minnesota: Technology Management Workshop</li>
+            <li>International Collaboration with George Mason University and Pforzheim Business School</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2010s and Beyond -->
+      <div class="w-full text-center my-8">
+        <div class="inline-block bg-gradient-to-r from-blue-900 to-blue-500 text-white px-6 py-2 rounded font-bold shadow">
+          <i class="fas fa-rocket mr-2"></i> 2010s and Beyond - Innovation
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-right">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-r-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">2010s</h3>
+          </div>
+          <ul class="list-disc pl-5 space-y-1 text-gray-700">
+            <li><span class="highlight">M.Mgt program</span> replaces the MBA program</li>
+            <li>Specialization in <span class="highlight">Business Analytics</span> and <span class="highlight">Technology Management</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border-l-4 border-blue-900 shadow rounded-lg px-6 py-4 inline-block">
+          <div class="flex items-center mb-2 justify-end">
+            <div class="flex-shrink-0 bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h3 class="text-lg font-bold text-blue-900">Present</h3>
+          </div>
+          <p>Having completed our <span class="highlight">Diamond Jubilee Year</span>, we are now marching towards our <span class="highlight">Platinum Jubilee</span> with renewed vigor and commitment to excellence in management education and research.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8 px-4 mt-8">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-xl font-bold mb-2">Department of Management Studies</h3>
+        <p class="text-blue-200">Indian Institute of Science, Bangalore</p>
+      </div>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-blue-300"><i class="fab fa-facebook-f text-xl"></i></a>
+        <a href="#" class="hover:text-blue-300"><i class="fab fa-twitter text-xl"></i></a>
+        <a href="#" class="hover:text-blue-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+        <a href="#" class="hover:text-blue-300"><i class="fab fa-instagram text-xl"></i></a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-blue-800 text-center text-blue-300">
+      <p>© 2025 Department of Management Studies, IISc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile menu toggler JS -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('nav-menu');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+
+      menu.classList.toggle('mobile-menu-open');
+
+      // Update toggle button icon
+      const icon = toggle.querySelector('i');
+      if (menu.classList.contains('mobile-menu-open')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    }
+
+    // Close mobile menu when clicking outside or on a link
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('nav');
+      const menu = document.getElementById('nav-menu');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+
+      // Close menu if clicking outside nav or on a nav link
+      if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
+        menu.classList.remove('mobile-menu-open');
+        const icon = toggle.querySelector('i');
+        icon.className = 'fas fa-bars';
+      }
+    });
+
+    // Prevent menu from closing when clicking on the menu itself
+    document.getElementById('nav-menu').addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  </script>
 </body>
 </html>
