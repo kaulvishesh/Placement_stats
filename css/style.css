@@ -346,6 +346,15 @@ h3 {
     margin-bottom: var(--space-sm);
 }
 
+/* Prevent email overflow in stat-card */
+.stat-card .stat-value {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    font-size: 1.1rem;
+    max-width: 100%;
+}
+
 .stat-description {
     color: var(--neutral-500);
     font-size: 0.875rem;
@@ -368,7 +377,7 @@ h3 {
     border: 1px solid var(--neutral-200);
     transition: var(--transition-normal);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     min-height: 480px;
     height: auto;
     display: flex;
@@ -383,6 +392,8 @@ h3 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    border-top-left-radius: var(--radius-2xl);
+    border-top-right-radius: var(--radius-2xl);
 }
 
 .chart-container:hover {
@@ -716,10 +727,9 @@ h3 {
 /* Team Member Styles */
 .team-member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
 }
 
 .team-member {
@@ -779,6 +789,13 @@ h3 {
     margin: 0;
 }
 
+/* Center department chair grid */
+.team-member-grid.chair-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
 /* Responsive adjustments for team members */
 @media (max-width: 768px) {
     .team-member-grid {
@@ -793,6 +810,18 @@ h3 {
 
     .team-member {
         padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 900px) {
+    .team-member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-member-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -847,4 +876,65 @@ h3 {
     .grid-cols-4 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
+
+/* CATGPT */
+
+#catgpt-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 998;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#cat-avatar {
+  width: 64px;
+  cursor: pointer;
+}
+
+#catgpt-btn {
+  display: none;
+  background-color: #1e40af;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#catgpt-chatbox {
+  position: fixed;
+  bottom: 20px;
+  left: 100px;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+#catgpt-messages {
+  max-height: 150px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+#catgpt-input {
+  width: 70%;
+  padding: 5px;
+}
+#catgpt-send {
+  width: 25%;
+  padding: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
 }

@@ -36,7 +36,7 @@
                 <div class="stat-description">Chair + 4 Coordinators</div>
             </div>
             <div class="stat-card animate-fade-in-up" style="animation-delay: 0.1s;">
-                <h3><i class="fas fa-envelope"></i> Recruiters Email</h3>
+                <h3><i class="fas fa-envelope"></i> Official Email</h3>
                 <div class="stat-value">placement.mgmt@iisc.ac.in</div>
                 <div class="stat-description">Direct contact</div>
             </div>
@@ -54,13 +54,13 @@
                 Department Chair
             </h2>
 
-            <div class="team-member-grid">
+            <div class="team-member-grid chair-center">
                 <div class="team-member animate-fade-in-up">
                     <div class="team-photo">
-                        <img src="../assets/photos/chair.jpg" alt="Department Chair" onerror="this.src='../assets/photos/placeholder.jpg'">
+                        <img src="../assets/photos/Shashi.jpg" alt="Department Chair" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Prof. [Chair Name]</h3>
+                        <h3>Prof. Shashi Jain</h3>
                         <p class="team-title">Department Chair</p>
                         <p class="team-description">Leading the Department of Management Studies with vision and excellence in management education and research.</p>
                     </div>
@@ -78,45 +78,45 @@
             <div class="team-member-grid">
                 <div class="team-member animate-fade-in-up">
                     <div class="team-photo">
-                        <img src="../assets/photos/coordinator1.jpg" alt="Placement Coordinator 1" onerror="this.src='../assets/photos/placeholder.jpg'">
+                        <img src="../assets/photos/Ujjwal.jpeg" alt="Placement Coordinator 1" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Prof. [Name 1]</h3>
+                        <h3>Ujjwal Gahoi</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">Specializing in corporate relations and student career development.</p>
+                        <p class="team-description">ujjawalgahoi@iisc.ac.in</p>
                     </div>
                 </div>
 
                 <div class="team-member animate-fade-in-up" style="animation-delay: 0.1s;">
                     <div class="team-photo">
-                        <img src="../assets/photos/coordinator2.jpg" alt="Placement Coordinator 2" onerror="this.src='../assets/photos/placeholder.jpg'">
+                        <img src="../assets/photos/Gulshan.jpeg" alt="Placement Coordinator 2" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Prof. [Name 2]</h3>
+                        <h3>Gulshan Kumar Alok</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">Expert in industry partnerships and recruitment strategy.</p>
+                        <p class="team-description">gulshanalok@iisc.ac.in</p>
                     </div>
                 </div>
 
                 <div class="team-member animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="team-photo">
-                        <img src="../assets/photos/coordinator3.jpg" alt="Placement Coordinator 3" onerror="this.src='../assets/photos/placeholder.jpg'">
+                        <img src="../assets/photos/Paarth.jpeg" alt="Placement Coordinator 3" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Prof. [Name 3]</h3>
+                        <h3>Paarth Barkur</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">Focused on student mentoring and career guidance.</p>
+                        <p class="team-description">paarthbarkur@iisc.ac.in</p>
                     </div>
                 </div>
 
                 <div class="team-member animate-fade-in-up" style="animation-delay: 0.3s;">
                     <div class="team-photo">
-                        <img src="../assets/photos/coordinator4.jpg" alt="Placement Coordinator 4" onerror="this.src='../assets/photos/placeholder.jpg'">
+                        <img src="../assets/photos/Vishesh.jpeg" alt="Placement Coordinator 4" onerror="this.src='../assets/photos/placeholder.jpg'">
                     </div>
                     <div class="team-info">
-                        <h3>Prof. [Name 4]</h3>
+                        <h3>Vishesh Kaul</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">Specializing in alumni relations and industry outreach.</p>
+                        <p class="team-description">visheshkaul@iisc.ac.in</p>
                     </div>
                 </div>
             </div>
@@ -251,6 +251,18 @@
                 Our Journey
             </a>
         </div>
+        <!-- CatGPT Footer Assistant -->
+        <section>
+            <div id="catgpt-container">
+                <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT">
+                <button id="catgpt-btn">Chat with CatGPT</button>
+            </div>
+            <div id="catgpt-chatbox" style="display:none;">
+                <div id="catgpt-messages"></div>
+                <input id="catgpt-input" placeholder="Ask something..." />
+                <button id="catgpt-send">Send</button>
+            </div>
+        </section>
     </main>
     
     <script>
@@ -287,6 +299,67 @@
         document.getElementById('nav-menu').addEventListener('click', function(event) {
             event.stopPropagation();
         });
+    </script>
+    <script>
+      // Placement Coordinator click easter egg
+      // Add a class to all placement coordinator name elements for targeting
+      // We'll select all elements with .team-title containing "Placement Coordinator"
+      // But for robustness, let's add a class to these elements
+      // (If you want, add class="placement-coordinator" to the <p class="team-title">Placement Coordinator</p> elements)
+      // For now, let's select via querySelectorAll and filter by text
+      let clickCount = 0;
+      // Find all elements with class "team-title" whose textContent includes "Placement Coordinator"
+      const pcs = Array.from(document.querySelectorAll('.team-title')).filter(
+        el => el.textContent.trim().toLowerCase() === 'placement coordinator'
+      );
+      pcs.forEach(pc => {
+        pc.classList.add('placement-coordinator');
+      });
+      const triggerText = document.querySelector('.placement-coordinator');
+      if (triggerText) {
+        triggerText.addEventListener('click', () => {
+          clickCount++;
+          if (clickCount === 5) {
+            document.getElementById('catgpt-container').style.display = 'flex';
+          }
+        });
+      }
+    </script>
+    <script>
+      // Show "Chat with CatGPT" button on cat click
+      document.getElementById('cat-avatar').addEventListener('click', () => {
+        document.getElementById('catgpt-btn').style.display = 'block';
+      });
+
+      // CatGPT Footer Assistant
+      document.getElementById('catgpt-btn').onclick = () => {
+        document.getElementById('catgpt-chatbox').style.display = 'block';
+        document.getElementById('catgpt-btn').style.display = 'none';
+      };
+
+      function appendMessage(sender, text) {
+        const m = document.createElement('div');
+        m.textContent = sender + ': ' + text;
+        document.getElementById('catgpt-messages').appendChild(m);
+      }
+
+      document.getElementById('catgpt-send').onclick = () => {
+        const input = document.getElementById('catgpt-input');
+        if (!input.value) return;
+        appendMessage('You', input.value);
+        setTimeout(() => {
+          const responses = ['meow', 'mew', 'purr', 'meow meow'];
+          const catReply = responses[Math.floor(Math.random() * responses.length)];
+          appendMessage('CatGPT', catReply);
+        }, 300);
+        input.value = '';
+      };
+
+      document.getElementById('catgpt-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          document.getElementById('catgpt-send').click();
+        }
+      });
     </script>
 
     <!-- Footer -->
