@@ -3,26 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sectors - MMGT IISC</title>
+    <title>Sector Analytics - IISc DMS</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav>
-        <div class="logo"><img src="../assets/logo.png" alt="M.MGT IISC Logo" style="height:72px; vertical-align:middle; margin-right:4px;">Department of Management Studies, IISC</div>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="salary.html">Salary Statistics</a></li>
-            <li><a href="companies.html">Companies</a></li>
-            <li><a href="sectors.html">Sectors</a></li>
+        <div class="logo">
+            <img src="../assets/logo.png" alt="IISc DMS Logo" style="height:48px;">
+            <span>Department of Management Studies, IISc</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="nav-menu">
+            <li><a href="../index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="../landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
+            <li><a href="salary.html"><i class="fas fa-chart-line"></i> Salary Analytics</a></li>
+            <li><a href="companies.html"><i class="fas fa-building"></i> Companies</a></li>
+            <li><a href="sectors.html" class="active"><i class="fas fa-industry"></i> Sectors</a></li>
         </ul>
     </nav>
+
     <main>
-        <h1>Sector-wise Distribution</h1>
-        <div class="chart-container">
-            <canvas id="sectorChart"></canvas>
+        <h1>Industry Sector Analytics</h1>
+
+        <!-- Key Sector Metrics -->
+        <div class="overview">
+            <div class="stat-card animate-fade-in-up">
+                <h3>Top Sector</h3>
+                <div class="stat-value">Technology</div>
+                <div class="stat-description">35% of placements</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h3>Fastest Growing</h3>
+                <div class="stat-value">Analytics</div>
+                <div class="stat-description">+25% YoY growth</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h3>Highest Paying</h3>
+                <div class="stat-value">Finance</div>
+                <div class="stat-description">₹38.5 LPA avg</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h3>Total Sectors</h3>
+                <div class="stat-value">6</div>
+                <div class="stat-description">Major industries</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h3>Diversity Index</h3>
+                <div class="stat-value">0.78</div>
+                <div class="stat-description">Well distributed</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.5s;">
+                <h3>Emerging Roles</h3>
+                <div class="stat-value">12</div>
+                <div class="stat-description">New positions</div>
+            </div>
+        </div>
+
+        <!-- Advanced Sector Analytics -->
+        <div class="charts-grid">
+            <div class="chart-container animate-fade-in-up">
+                <h2><i class="fas fa-chart-pie"></i> Sector Distribution</h2>
+                <canvas id="sectorDistributionChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h2><i class="fas fa-chart-line"></i> Sector Growth Trends</h2>
+                <canvas id="sectorGrowthChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h2><i class="fas fa-money-bill-wave"></i> Sector-wise Compensation</h2>
+                <canvas id="sectorCompensationChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h2><i class="fas fa-users"></i> Role Distribution by Sector</h2>
+                <canvas id="roleDistributionChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h2><i class="fas fa-chart-area"></i> Market Share Evolution</h2>
+                <canvas id="marketShareChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.5s;">
+                <h2><i class="fas fa-graduation-cap"></i> Skills Demand by Sector</h2>
+                <canvas id="skillsDemandChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
+            <a href="salary.html" class="btn btn-primary">
+                <i class="fas fa-chart-line"></i>
+                Salary Analysis
+            </a>
+            <a href="companies.html" class="btn btn-secondary">
+                <i class="fas fa-building"></i>
+                Company Insights
+            </a>
+            <a href="../index.html" class="btn btn-secondary">
+                <i class="fas fa-home"></i>
+                Back to Dashboard
+            </a>
         </div>
     </main>
+
     <script src="../js/sectors.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            menu.classList.toggle('mobile-menu-open');
+
+            // Update toggle button icon
+            const icon = toggle.querySelector('i');
+            if (menu.classList.contains('mobile-menu-open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Close mobile menu when clicking outside or on a link
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            // Close menu if clicking outside nav or on a nav link
+            if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
+                menu.classList.remove('mobile-menu-open');
+                const icon = toggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Prevent menu from closing when clicking on the menu itself
+        document.getElementById('nav-menu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    </script>
 </body>
 </html>

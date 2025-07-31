@@ -3,60 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMGT IISC Placement Statistics</title>
+    <title>IISc DMS - Placement Analytics Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav>
-        <div class="logo"><img src="assets/logo.png" alt="MMGT IISC Logo" style="height:72px; vertical-align:middle; margin-right:4px;">Department of Management Studies, IISC</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="pages/salary.html">Salary Statistics</a></li>
-            <li><a href="pages/companies.html">Companies</a></li>
-            <li><a href="pages/sectors.html">Sectors</a></li>
+        <div class="logo">
+            <img src="assets/logo.png" alt="IISc DMS Logo" style="height:48px;">
+            <span>Department of Management Studies, IISc</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="nav-menu">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
+            <li><a href="pages/salary.html"><i class="fas fa-chart-line"></i> Salary Analytics</a></li>
+            <li><a href="pages/companies.html"><i class="fas fa-building"></i> Companies</a></li>
+            <li><a href="pages/sectors.html"><i class="fas fa-industry"></i> Sectors</a></li>
         </ul>
     </nav>
     <main>
-        <h1>Placement Statistics Dashboard</h1>
+        <h1>Placement Analytics Dashboard</h1>
+
+        <!-- Hero Section with Key Metrics -->
         <div class="overview">
-            <div class="stat-card">
+            <div class="stat-card animate-fade-in-up">
                 <h3>Median Package</h3>
                 <div class="stat-value">₹24 LPA</div>
+                <div class="stat-description">50th percentile salary</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.1s;">
                 <h3>Average Package</h3>
                 <div class="stat-value">₹27.05 LPA</div>
+                <div class="stat-description">Mean compensation</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h3>Highest Package</h3>
                 <div class="stat-value">₹44.5 LPA</div>
+                <div class="stat-description">Peak offer received</div>
             </div>
-            <div class="stat-card">
-                <h3>Expected ROI on fees</h3>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h3>Placement Rate</h3>
+                <div class="stat-value">95%</div>
+                <div class="stat-description">Students placed</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h3>ROI on Investment</h3>
                 <div class="stat-value">4.5x</div>
+                <div class="stat-description">Return multiple</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.5s;">
+                <h3>Top Recruiters</h3>
+                <div class="stat-value">50+</div>
+                <div class="stat-description">Companies hiring</div>
             </div>
         </div>
-        
+
+        <!-- Advanced Analytics Grid -->
         <div class="charts-grid">
-            <div class="chart-container">
-                <h2>Package Distribution</h2>
+            <div class="chart-container animate-fade-in-up">
+                <h2><i class="fas fa-chart-bar"></i> Package Distribution</h2>
                 <canvas id="packageChart"></canvas>
             </div>
-            <div class="chart-container">
-                <h2>Sector-wise Placement</h2>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h2><i class="fas fa-pie-chart"></i> Sector-wise Placement</h2>
                 <canvas id="sectorChart"></canvas>
             </div>
-            <div class="chart-container">
-                <h2>Role-wise Salary</h2>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h2><i class="fas fa-chart-line"></i> Role-wise Salary Trends</h2>
                 <canvas id="salaryChart"></canvas>
             </div>
-            <div class="chart-container">
-                <h2>Company Distribution</h2>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h2><i class="fas fa-building"></i> Top Recruiting Companies</h2>
                 <canvas id="companyChart"></canvas>
             </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h2><i class="fas fa-calendar-alt"></i> Placement Timeline</h2>
+                <canvas id="timelineChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.5s;">
+                <h2><i class="fas fa-map-marker-alt"></i> Geographic Distribution</h2>
+                <canvas id="locationChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
+            <a href="pages/salary.html" class="btn btn-primary">
+                <i class="fas fa-chart-line"></i>
+                Detailed Salary Analysis
+            </a>
+            <a href="pages/companies.html" class="btn btn-secondary">
+                <i class="fas fa-building"></i>
+                Company Insights
+            </a>
+            <a href="landing_page.html" class="btn btn-secondary">
+                <i class="fas fa-history"></i>
+                Our Journey
+            </a>
         </div>
     </main>
+
     <script src="js/main.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            menu.classList.toggle('mobile-menu-open');
+
+            // Update toggle button icon
+            const icon = toggle.querySelector('i');
+            if (menu.classList.contains('mobile-menu-open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Close mobile menu when clicking outside or on a link
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            // Close menu if clicking outside nav or on a nav link
+            if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
+                menu.classList.remove('mobile-menu-open');
+                const icon = toggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Prevent menu from closing when clicking on the menu itself
+        document.getElementById('nav-menu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    </script>
 </body>
 </html>
