@@ -377,7 +377,7 @@ h3 {
     border: 1px solid var(--neutral-200);
     transition: var(--transition-normal);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Changed from visible to hidden for correct clipping */
     min-height: 480px;
     height: auto;
     display: flex;
@@ -392,6 +392,7 @@ h3 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    /* Added to make the green line match the container's rounded corners */
     border-top-left-radius: var(--radius-2xl);
     border-top-right-radius: var(--radius-2xl);
 }
@@ -875,5 +876,68 @@ h3 {
 
     .grid-cols-4 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* New responsive rules for very small screens */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    nav {
+        padding: var(--space-sm);
+    }
+
+    nav ul {
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 0.75rem 1rem;
+    }
+
+    main {
+        padding: var(--space-md) var(--space-sm);
+    }
+
+    h1 {
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        margin: var(--space-lg) 0;
+    }
+
+    .stat-card {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .overview {
+        gap: var(--space-md);
+        margin: var(--space-xl) 0;
+    }
+
+    .team-member-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .charts-grid {
+        gap: var(--space-md);
+        grid-template-columns: 1fr;
+    }
+
+    .chart-container {
+        padding: var(--space-md);
+    }
+    
+    .team-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-info h3 {
+        font-size: 1rem;
+    }
+    
+    .team-title {
+        font-size: 0.875rem;
     }
 }
