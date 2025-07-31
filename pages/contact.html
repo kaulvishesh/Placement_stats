@@ -255,7 +255,7 @@
         <section>
             <div id="catgpt-container">
                 <img id="cat-avatar" src="../assets/cat.png" alt="CatGPT">
-                <button id="catgpt-btn">Chat with Chintu</button>
+                <button id="catgpt-btn">Chat with CatGPT</button>
             </div>
             <div id="catgpt-chatbox" style="display:none;">
                 <div id="catgpt-messages"></div>
@@ -299,6 +299,7 @@
         document.getElementById('nav-menu').addEventListener('click', function(event) {
             event.stopPropagation();
         });
+
     </script>
     <script>
       // Placement Coordinator click easter egg
@@ -345,7 +346,7 @@
         setTimeout(() => {
           const responses = ['meow', 'mew', 'purr', 'meow meow'];
           const catReply = responses[Math.floor(Math.random() * responses.length)];
-          appendMessage('Chintu', catReply);
+          appendMessage('CatGPT', catReply);
         }, 300);
         input.value = '';
       };
@@ -356,7 +357,6 @@
         }
       });
     </script>
-
     <!-- Footer -->
     <footer style="background: var(--primary-blue); color: white; padding: var(--space-lg) var(--space-md); margin-top: var(--space-2xl);">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
