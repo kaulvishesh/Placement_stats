@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IISc DoMS - Placement Statistics & Analytics</title>
+    <title>Placement Highlights - IISc DoMS</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -19,14 +19,14 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul id="nav-menu">
-            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="index.html" class="active"><i class="fas fa-chart-bar"></i> Placement Highlights</a></li>
             <li><a href="landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
-            <li><a href="pages/recruiter-insights.html"><i class="fas fa-chart-line"></i> Recruiter Insights</a></li>
+            <li><a href="pages/recruiter-insights.html"><i class="fas fa-briefcase"></i> Internship Highlights</a></li>
             <li><a href="pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
     </nav>
     <main>
-        <h1>Placement Statistics & Analytics</h1>
+        <h1>Placement Highlights</h1>
 
         <!-- Hero Section with Key Metrics -->
         <div class="overview">
@@ -45,11 +45,6 @@
                 <div class="stat-value">₹44.5 LPA</div>
                 <div class="stat-description">Peak offer received</div>
             </div>
-            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.3s;">
-                <h3>Placement Rate</h3>
-                <div class="stat-value">91%</div>
-                <div class="stat-description">Students placed</div>
-            </div>
             <div class="stat-card animate-fade-in-up" style="animation-delay: 0.4s;">
                 <h3>Mean ROI on Investment</h3>
                 <div class="stat-value">4.5x</div>
@@ -65,7 +60,7 @@
         <!-- Comprehensive Analytics Dashboard -->
         <div class="charts-grid">
             <div class="chart-container animate-fade-in-up">
-                <h2><i class="fas fa-chart-bar"></i> Package Distribution with KDE</h2>
+                <h2><i class="fas fa-chart-bar"></i> Package Distribution</h2>
                 <canvas id="packageChart"></canvas>
             </div>
             <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
@@ -80,17 +75,59 @@
                 <h2><i class="fas fa-building"></i> Top Recruiting Companies</h2>
                 <canvas id="companyChart"></canvas>
             </div>
-            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.4s;">
-                <h2><i class="fas fa-radar-chart"></i> Role-wise Compensation</h2>
-                <canvas id="roleSalaryRadarChart"></canvas>
+        </div>
+
+        <!-- Why Recruit from IISc DoMS -->
+        <div style="margin-top: var(--space-3xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-handshake" style="color: var(--primary-blue);"></i>
+                Why Recruit from IISc DoMS?
+            </h2>
+
+            <div class="charts-grid">
+                <div class="chart-container animate-fade-in-up">
+                    <h2><i class="fas fa-star"></i> Academic Excellence</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Top-tier Institution:</strong> IISc is India's premier research institute</li>
+                            <li><strong>Rigorous Curriculum:</strong> Blend of theory and practical application</li>
+                            <li><strong>Research Focus:</strong> Students trained in analytical thinking</li>
+                            <li><strong>Faculty Excellence:</strong> World-class professors and industry experts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h2><i class="fas fa-users"></i> Student Profile</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Diverse Backgrounds:</strong> Engineering, Science, and Management</li>
+                            <li><strong>High Achievers:</strong> Top percentile students from across India</li>
+                            <li><strong>Global Perspective:</strong> International exposure and collaborations</li>
+                            <li><strong>Leadership Skills:</strong> Proven track record in various domains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h2><i class="fas fa-rocket"></i> Career Readiness</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Industry Projects:</strong> Real-world problem solving experience</li>
+                            <li><strong>Internship Programs:</strong> Hands-on industry exposure</li>
+                            <li><strong>Soft Skills:</strong> Communication and teamwork excellence</li>
+                            <li><strong>Innovation Mindset:</strong> Entrepreneurial and creative thinking</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Quick Actions -->
         <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
             <a href="pages/recruiter-insights.html" class="btn btn-primary">
-                <i class="fas fa-chart-line"></i>
-                Recruiter Insights
+                <i class="fas fa-briefcase"></i>
+                Internship Highlights
             </a>
             <a href="landing_page.html" class="btn btn-secondary">
                 <i class="fas fa-history"></i>

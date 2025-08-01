@@ -849,6 +849,22 @@ h3 {
     border-radius: var(--radius-md);
 }
 
+/* Side-by-side Timeline Responsive Styles */
+@media (max-width: 768px) {
+    .timeline-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--space-lg) !important;
+    }
+
+    .timeline-container h2 {
+        font-size: 1.25rem !important;
+    }
+
+    .timeline-container h3 {
+        font-size: 1rem !important;
+    }
+}
+
 @media (max-width: 900px) {
     .team-member-grid {
         grid-template-columns: repeat(2, 1fr);
