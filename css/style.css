@@ -364,9 +364,10 @@ h3 {
 /* Advanced Chart Grid */
 .charts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
     margin-top: var(--space-3xl);
+    align-items: start;
 }
 
 .chart-container {
@@ -378,10 +379,24 @@ h3 {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden; /* Changed from visible to hidden for correct clipping */
-    min-height: 480px;
-    height: auto;
+    min-height: 520px;
+    height: 520px;
+    width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.chart-container canvas {
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+    width: 100% !important;
+}
+
+/* Text-only containers override to be dynamic */
+.chart-container.text-only {
+    min-height: auto !important;
+    height: auto !important;
 }
 
 .chart-container::before {
@@ -444,8 +459,8 @@ h3 {
 }
 
 /* Ensure chart containers have enough space for legends */
-.chart-container {
-    padding-bottom: calc(var(--space-xl) + 20px);
+.chart-container canvas {
+    margin-bottom: 20px;
 }
 
 /* Loading States */
@@ -849,6 +864,51 @@ h3 {
     border-radius: var(--radius-md);
 }
 
+/* Dynamic Content Sizing */
+
+.chart-container canvas {
+    min-height: 300px !important;
+    height: 300px !important;
+}
+
+.recruitment-info {
+    padding: var(--space-md) var(--space-lg);
+    min-height: auto;
+    height: auto;
+}
+
+.recruitment-info ul {
+    margin: 0;
+    padding: 0;
+}
+
+.recruitment-info li {
+    padding: var(--space-xs) 0;
+    line-height: 1.5;
+}
+
+.recruitment-info h3 {
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.recruitment-info h3:first-child {
+    margin-top: 0;
+}
+
+/* Timeline specific adjustments */
+.timeline-container .recruitment-info {
+    padding: var(--space-md);
+}
+
+.timeline-container .recruitment-info div {
+    margin-bottom: var(--space-md);
+}
+
+.timeline-container .recruitment-info div:last-child {
+    margin-bottom: 0;
+}
+
 /* Side-by-side Timeline Responsive Styles */
 @media (max-width: 768px) {
     .timeline-grid {
@@ -862,6 +922,14 @@ h3 {
 
     .timeline-container h3 {
         font-size: 1rem !important;
+    }
+
+    .chart-container {
+        padding: var(--space-md);
+    }
+
+    .recruitment-info {
+        padding: var(--space-sm) var(--space-md);
     }
 }
 
@@ -887,6 +955,17 @@ h3 {
         grid-template-columns: 1fr;
         gap: var(--space-lg);
     }
+
+    .chart-container {
+        height: 480px;
+        min-height: 480px;
+    }
+
+    .chart-container canvas {
+        height: 350px !important;
+        min-height: 350px !important;
+        max-height: 350px !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -905,7 +984,19 @@ h3 {
 
     .chart-container {
         padding: var(--space-lg);
-        min-height: 420px;
+        height: 450px;
+        min-height: 450px;
+    }
+
+    .chart-container canvas {
+        height: 320px !important;
+        min-height: 320px !important;
+        max-height: 320px !important;
+    }
+
+    .chart-container.text-only {
+        min-height: auto !important;
+        height: auto !important;
     }
 
     .chart-container canvas {
