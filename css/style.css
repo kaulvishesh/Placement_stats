@@ -1166,3 +1166,133 @@ h3 {
   border: none;
   cursor: pointer;
 }
+
+/* Rolling Logo Belt Styles */
+.logo-belt-container {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) 0;
+    margin: var(--space-xl) 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.logo-belt-container::before,
+.logo-belt-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logo-belt-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.logo-belt-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+}
+
+.logo-belt {
+    display: flex;
+    animation: scroll-left 60s linear infinite;
+    width: calc(200% + 40px);
+}
+
+.logo-item {
+    flex: 0 0 auto;
+    margin: 0 var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    min-width: 120px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+    border: 1px solid var(--neutral-200);
+}
+
+.logo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-blue);
+}
+
+.logo-item img {
+    max-height: 50px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-fast);
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.logo-belt-container:hover .logo-belt {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-belt-container {
+        padding: var(--space-lg) 0;
+    }
+
+    .logo-item {
+        height: 60px;
+        min-width: 100px;
+        margin: 0 var(--space-md);
+    }
+
+    .logo-item img {
+        max-height: 40px;
+        max-width: 80px;
+    }
+
+    .logo-belt {
+        animation-duration: 45s;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-item {
+        height: 50px;
+        min-width: 80px;
+        margin: 0 var(--space-sm);
+    }
+
+    .logo-item img {
+        max-height: 30px;
+        max-width: 60px;
+    }
+
+    .logo-belt {
+        animation-duration: 35s;
+    }
+}

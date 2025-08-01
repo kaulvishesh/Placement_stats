@@ -1,0 +1,31 @@
+# Company Logos Directory
+
+This folder contains company logo images for the rolling belt on the Placement Highlights page.
+
+## Required Logo Files:
+- microsoft.png
+- google.png
+- amazon.png
+- mckinsey.png
+- bcg.png
+- goldman-sachs.png
+- jp-morgan.png
+- flipkart.png
+- deloitte.png
+- ey.png
+- kpmg.png
+- pwc.png
+- accenture.png
+- tcs.png
+- infosys.png
+- wipro.png
+
+## Image Guidelines:
+- Format: PNG or JPG
+- Size: Recommended 200x100px (will be auto-resized)
+- Background: Transparent PNG preferred
+- Quality: High resolution for crisp display
+- Naming: Use lowercase with hyphens (e.g., jp-morgan.png)
+
+## Usage:
+These logos will appear in the horizontal rolling belt at the bottom of the Placement Highlights page with smooth animation and hover effects.

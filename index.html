@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav>
-        <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+        <div class="logo" onclick="window.location.href='landing_page.html'" style="cursor: pointer;">
             <img src="assets/logo.png" alt="IISc DoMS Logo" style="height:56px;">
             <span>Department of Management Studies, IISc</span>
         </div>
@@ -19,8 +19,8 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul id="nav-menu">
-            <li><a href="index.html" class="active"><i class="fas fa-chart-bar"></i> Placement Highlights</a></li>
             <li><a href="landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
+            <li><a href="index.html" class="active"><i class="fas fa-chart-bar"></i> Placement Highlights</a></li>
             <li><a href="pages/recruiter-insights.html"><i class="fas fa-briefcase"></i> Internship Highlights</a></li>
             <li><a href="pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
@@ -123,59 +123,173 @@
                 <i class="fas fa-book-open" style="color: var(--primary-blue);"></i>
                 Courses Offered
             </h2>
+
             <div class="charts-grid">
-                <div class="chart-container animate-fade-in-up">
-                    <h3 style="color: var(--primary-blue); font-size: 1.2rem; font-weight: 700; margin-bottom: var(--space-md);">
-                        Quantitative Core
-                    </h3>
-                    <ul class="recruitment-info" style="margin:0; padding-left:1.2em;">
-                        <li>Options, Futures &amp; Derivatives</li>
-                        <li>Applied Statistics</li>
-                        <li>Time Series &amp; Regression</li>
-                        <li>Probability Theory</li>
-                        <li>Linear Programming</li>
-                        <li>Research Methodology</li>
-                    </ul>
+                <div class="chart-container text-only animate-fade-in-up">
+                    <h2><i class="fas fa-calculator"></i> Quantitative Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Options, Futures & Derivatives:</strong> Advanced financial instruments</li>
+                            <li><strong>Applied Statistics:</strong> Statistical methods for business</li>
+                            <li><strong>Time Series & Regression:</strong> Forecasting and analysis</li>
+                            <li><strong>Probability Theory:</strong> Mathematical foundations</li>
+                            <li><strong>Linear Programming:</strong> Optimization techniques</li>
+                            <li><strong>Research Methodology:</strong> Scientific research methods</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <h3 style="color: var(--primary-blue); font-size: 1.2rem; font-weight: 700; margin-bottom: var(--space-md);">
-                        Data Science Core
-                    </h3>
-                    <ul class="recruitment-info" style="margin:0; padding-left:1.2em;">
-                        <li>Machine Learning</li>
-                        <li>Deep Learning for NLP</li>
-                        <li>Bayesian Learning</li>
-                        <li>Game Theory</li>
-                        <li>Stochastic Processes</li>
-                        <li>Random Processes</li>
-                        <li>Introduction to Scalable Systems</li>
-                        <li>Modeling and Simulation</li>
-                    </ul>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h2><i class="fas fa-brain"></i> Data Science Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Machine Learning:</strong> AI algorithms and applications</li>
+                            <li><strong>Deep Learning for NLP:</strong> Neural networks for language</li>
+                            <li><strong>Bayesian Learning:</strong> Probabilistic machine learning</li>
+                            <li><strong>Game Theory:</strong> Strategic decision making</li>
+                            <li><strong>Stochastic Processes:</strong> Random system modeling</li>
+                            <li><strong>Random Processes:</strong> Statistical signal processing</li>
+                            <li><strong>Scalable Systems:</strong> Large-scale system design</li>
+                            <li><strong>Modeling and Simulation:</strong> System analysis tools</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <h3 style="color: var(--primary-blue); font-size: 1.2rem; font-weight: 700; margin-bottom: var(--space-md);">
-                        Analytics Core
-                    </h3>
-                    <ul class="recruitment-info" style="margin:0; padding-left:1.2em;">
-                        <li>Operations Research</li>
-                        <li>Marketing Analytics</li>
-                        <li>Econometrics</li>
-                        <li>Strategic Management</li>
-                        <li>Data Mining</li>
-                        <li>Decision Models</li>
-                    </ul>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h2><i class="fas fa-chart-line"></i> Analytics Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Operations Research:</strong> Mathematical optimization</li>
+                            <li><strong>Marketing Analytics:</strong> Consumer behavior analysis</li>
+                            <li><strong>Econometrics:</strong> Economic data analysis</li>
+                            <li><strong>Strategic Management:</strong> Business strategy formulation</li>
+                            <li><strong>Data Mining:</strong> Pattern discovery in data</li>
+                            <li><strong>Decision Models:</strong> Analytical decision frameworks</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Past Recruiters Rolling Belt -->
+        <div style="margin-top: var(--space-3xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-handshake" style="color: var(--primary-blue);"></i>
+                Past Recruiters
+            </h2>
+
+            <div class="logo-belt-container">
+                <div class="logo-belt">
+                    <div class="logo-item">
+                        <img src="assets/company-logos/microsoft.png" alt="Microsoft" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/google.png" alt="Google" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/amazon.png" alt="Amazon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/mckinsey.png" alt="McKinsey" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/bcg.png" alt="BCG" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/goldman-sachs.png" alt="Goldman Sachs" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/jp-morgan.png" alt="JP Morgan" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/flipkart.png" alt="Flipkart" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/ey.png" alt="EY" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/kpmg.png" alt="KPMG" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/pwc.png" alt="PwC" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/accenture.png" alt="Accenture" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/tcs.png" alt="TCS" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/infosys.png" alt="Infosys" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/wipro.png" alt="Wipro" onerror="this.style.display='none'">
+                    </div>
+
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="logo-item">
+                        <img src="assets/company-logos/microsoft.png" alt="Microsoft" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/google.png" alt="Google" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/amazon.png" alt="Amazon" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/mckinsey.png" alt="McKinsey" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/bcg.png" alt="BCG" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/goldman-sachs.png" alt="Goldman Sachs" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/jp-morgan.png" alt="JP Morgan" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/flipkart.png" alt="Flipkart" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/deloitte.png" alt="Deloitte" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/ey.png" alt="EY" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/kpmg.png" alt="KPMG" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/pwc.png" alt="PwC" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/accenture.png" alt="Accenture" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/tcs.png" alt="TCS" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/infosys.png" alt="Infosys" onerror="this.style.display='none'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/company-logos/wipro.png" alt="Wipro" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Quick Actions -->
         <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
-            <a href="pages/recruiter-insights.html" class="btn btn-primary">
-                <i class="fas fa-briefcase"></i>
-                Internship Highlights
-            </a>
-            <a href="landing_page.html" class="btn btn-secondary">
+            <a href="landing_page.html" class="btn btn-primary">
                 <i class="fas fa-history"></i>
                 Our Journey
+            </a>
+            <a href="pages/recruiter-insights.html" class="btn btn-secondary">
+                <i class="fas fa-briefcase"></i>
+                Internship Highlights
             </a>
             <a href="pages/contact.html" class="btn btn-secondary">
                 <i class="fas fa-envelope"></i>
