@@ -160,26 +160,51 @@
 
 		// Summer Stipend Distribution with KDE Chart
 		createChart('summerStipendDistributionChart', {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: ['15K', '25K', '50K', '70K', '75K', '130K'],
 				datasets: [{
-					label: 'Frequency Distribution',
+					label: 'Number of Students',
 					data: [1, 2, 2, 2, 2, 1],
+					backgroundColor: [
+						'rgba(245, 158, 11, 0.7)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(245, 158, 11, 0.7)'
+					],
 					borderColor: 'rgb(245, 158, 11)',
-					backgroundColor: 'rgba(245, 158, 11, 0.1)',
+					borderWidth: 2,
+					borderRadius: {
+						topLeft: 8,
+						topRight: 8
+					},
+					yAxisID: 'y'
+				}, {
+					label: 'KDE Curve',
+					type: 'line',
+					data: [0.8, 1.8, 2.2, 2.1, 1.9, 0.9],
+					borderColor: 'rgb(239, 68, 68)',
+					backgroundColor: 'rgba(239, 68, 68, 0.1)',
 					borderWidth: 3,
-					fill: true,
+					fill: false,
 					tension: 0.4,
-					pointBackgroundColor: 'rgb(245, 158, 11)',
+					pointBackgroundColor: 'rgb(239, 68, 68)',
 					pointBorderColor: 'white',
 					pointBorderWidth: 2,
-					pointRadius: 4
+					pointRadius: 5,
+					pointHoverRadius: 7,
+					yAxisID: 'y1'
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
+				interaction: {
+					mode: 'index',
+					intersect: false,
+				},
 				plugins: {
 					legend: {
 						position: 'top',
@@ -198,22 +223,39 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								return context.dataset.label + ': ' + context.parsed.y + '%';
+								if (context.datasetIndex === 0) {
+									return `${context.parsed.y} students`;
+								} else {
+									return `Density: ${context.parsed.y.toFixed(1)}`;
+								}
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
+						type: 'linear',
+						display: true,
+						position: 'left',
 						beginAtZero: true,
 						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: {
-							callback: function (value) { return value + '%'; },
-							font: { weight: '500' }
-						},
+						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Frequency (%)',
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
+					},
+					y1: {
+						type: 'linear',
+						display: true,
+						position: 'right',
+						beginAtZero: true,
+						grid: { drawOnChartArea: false },
+						ticks: { font: { weight: '500' } },
+						title: {
+							display: true,
+							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
@@ -222,7 +264,7 @@
 						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Stipend Range',
+							text: 'Summer Stipend Range',
 							font: { weight: '600' }
 						}
 					}
@@ -233,26 +275,53 @@
 
 		// Winter Stipend Distribution with KDE Chart
 		createChart('winterStipendDistributionChart', {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: ['50K', '60K', '75K', '100K', '110K', '120K', '150K', '200K'],
 				datasets: [{
-					label: 'Frequency Distribution',
+					label: 'Number of Students',
 					data: [2, 1, 2, 1, 1, 1, 2, 1],
+					backgroundColor: [
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(59, 130, 246, 0.7)'
+					],
 					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 2,
+					borderRadius: {
+						topLeft: 8,
+						topRight: 8
+					},
+					yAxisID: 'y'
+				}, {
+					label: 'KDE Curve',
+					type: 'line',
+					data: [1.8, 1.2, 1.9, 1.1, 1.0, 1.1, 1.8, 0.9],
+					borderColor: 'rgb(16, 185, 129)',
+					backgroundColor: 'rgba(16, 185, 129, 0.1)',
 					borderWidth: 3,
-					fill: true,
+					fill: false,
 					tension: 0.4,
-					pointBackgroundColor: 'rgb(59, 130, 246)',
+					pointBackgroundColor: 'rgb(16, 185, 129)',
 					pointBorderColor: 'white',
 					pointBorderWidth: 2,
-					pointRadius: 4
+					pointRadius: 5,
+					pointHoverRadius: 7,
+					yAxisID: 'y1'
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
+				interaction: {
+					mode: 'index',
+					intersect: false,
+				},
 				plugins: {
 					legend: {
 						position: 'top',
@@ -271,22 +340,39 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								return context.dataset.label + ': ' + context.parsed.y + '%';
+								if (context.datasetIndex === 0) {
+									return `${context.parsed.y} students`;
+								} else {
+									return `Density: ${context.parsed.y.toFixed(1)}`;
+								}
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
+						type: 'linear',
+						display: true,
+						position: 'left',
 						beginAtZero: true,
 						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: {
-							callback: function (value) { return value + '%'; },
-							font: { weight: '500' }
-						},
+						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Frequency (%)',
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
+					},
+					y1: {
+						type: 'linear',
+						display: true,
+						position: 'right',
+						beginAtZero: true,
+						grid: { drawOnChartArea: false },
+						ticks: { font: { weight: '500' } },
+						title: {
+							display: true,
+							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
@@ -295,7 +381,7 @@
 						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Stipend Range',
+							text: 'Winter Stipend Range',
 							font: { weight: '600' }
 						}
 					}
