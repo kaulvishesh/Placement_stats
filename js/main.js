@@ -40,50 +40,33 @@
 
 		// Enhanced Package Distribution Chart with KDE Overlay
 		createChart('packageChart', {
-			type: 'bar',
+			type: 'line',
 			data: {
-				labels: ['15-20 LPA', '20-25 LPA', '25-30 LPA', '30-35 LPA', '35+ LPA'],
+				labels: ['17 LPA', '21 LPA', '22 LPA', '24 LPA', '35 LPA', '44.5 LPA'],
 				datasets: [{
-					label: 'Number of Offers',
-					data: [1, 6, 0, 0, 3],
-					backgroundColor: 'rgba(59, 130, 246, 0.7)',
+					label: 'Frequency Distribution',
+					data: [1, 1, 1, 4, 2, 1],
 					borderColor: 'rgb(59, 130, 246)',
-					borderWidth: 2,
-					borderRadius: 8,
-					borderSkipped: false,
-					yAxisID: 'y'
-				}, {
-					label: 'Density Curve (KDE)',
-					type: 'line',
-					data: [0.8, 4.2, 2.8, 1.5, 0.7],
-					borderColor: 'rgb(239, 68, 68)',
-					backgroundColor: 'rgba(239, 68, 68, 0.1)',
+					backgroundColor: 'rgba(59, 130, 246, 0.1)',
 					borderWidth: 3,
-					fill: false,
+					fill: true,
 					tension: 0.4,
-					pointBackgroundColor: 'rgb(239, 68, 68)',
+					pointBackgroundColor: 'rgb(59, 130, 246)',
 					pointBorderColor: 'white',
 					pointBorderWidth: 2,
-					pointRadius: 5,
-					pointHoverRadius: 7,
-					yAxisID: 'y1'
+					pointRadius: 4
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
-				interaction: {
-					mode: 'index',
-					intersect: false,
-				},
 				plugins: {
 					legend: {
-						display: true,
 						position: 'top',
 						labels: {
 							usePointStyle: true,
 							font: { weight: '500' },
-							padding: 20
+							padding: 15
 						}
 					},
 					tooltip: {
@@ -95,68 +78,36 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								if (context.datasetIndex === 0) {
-									return `${context.parsed.y} students placed`;
-								} else {
-									return `Density: ${context.parsed.y.toFixed(2)}`;
-								}
+								return context.dataset.label + ': ' + context.parsed.y + '%';
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
-						type: 'linear',
-						display: true,
-						position: 'left',
 						beginAtZero: true,
-						grid: {
-							color: 'rgba(0, 0, 0, 0.05)'
-						},
+						grid: { color: 'rgba(0, 0, 0, 0.05)' },
 						ticks: {
+							callback: function (value) { return value + '%'; },
 							font: { weight: '500' }
 						},
 						title: {
 							display: true,
-							text: 'Number of Students',
-							font: { weight: '600' }
-						}
-					},
-					y1: {
-						type: 'linear',
-						display: true,
-						position: 'right',
-						beginAtZero: true,
-						grid: {
-							drawOnChartArea: false,
-						},
-						ticks: {
-							font: { weight: '500' }
-						},
-						title: {
-							display: true,
-							text: 'Density',
+							text: 'Frequency (%)',
 							font: { weight: '600' }
 						}
 					},
 					x: {
-						grid: {
-							display: false
-						},
-						ticks: {
-							font: { weight: '500' }
-						},
+						grid: { display: false },
+						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Salary Range',
+							text: 'Package Range',
 							font: { weight: '600' }
 						}
 					}
 				},
-				animation: {
-					duration: 2000,
-					easing: 'easeOutQuart'
-				}
+				animation: { duration: 2000, easing: 'easeOutQuart' }
 			}
 		});
 
