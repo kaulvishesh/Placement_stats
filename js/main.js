@@ -40,26 +40,51 @@
 
 		// Enhanced Package Distribution Chart with KDE Overlay
 		createChart('packageChart', {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: ['17 LPA', '21 LPA', '22 LPA', '24 LPA', '35 LPA', '44.5 LPA'],
 				datasets: [{
-					label: 'Frequency Distribution',
+					label: 'Number of Students',
 					data: [1, 1, 1, 4, 2, 1],
+					backgroundColor: [
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(59, 130, 246, 1.0)',
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(59, 130, 246, 0.7)'
+					],
 					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 2,
+					borderRadius: {
+						topLeft: 8,
+						topRight: 8
+					},
+					yAxisID: 'y'
+				}, {
+					label: 'KDE Curve',
+					type: 'line',
+					data: [0.8, 0.9, 1.0, 3.5, 2.2, 0.9],
+					borderColor: 'rgb(239, 68, 68)',
+					backgroundColor: 'rgba(239, 68, 68, 0.1)',
 					borderWidth: 3,
-					fill: true,
+					fill: false,
 					tension: 0.4,
-					pointBackgroundColor: 'rgb(59, 130, 246)',
+					pointBackgroundColor: 'rgb(239, 68, 68)',
 					pointBorderColor: 'white',
 					pointBorderWidth: 2,
-					pointRadius: 4
+					pointRadius: 5,
+					pointHoverRadius: 7,
+					yAxisID: 'y1'
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
+				interaction: {
+					mode: 'index',
+					intersect: false,
+				},
 				plugins: {
 					legend: {
 						position: 'top',
@@ -78,22 +103,39 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								return context.dataset.label + ': ' + context.parsed.y + '%';
+								if (context.datasetIndex === 0) {
+									return `${context.parsed.y} students placed`;
+								} else {
+									return `Density: ${context.parsed.y.toFixed(1)}`;
+								}
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
+						type: 'linear',
+						display: true,
+						position: 'left',
 						beginAtZero: true,
 						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: {
-							callback: function (value) { return value + '%'; },
-							font: { weight: '500' }
-						},
+						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Frequency (%)',
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
+					},
+					y1: {
+						type: 'linear',
+						display: true,
+						position: 'right',
+						beginAtZero: true,
+						grid: { drawOnChartArea: false },
+						ticks: { font: { weight: '500' } },
+						title: {
+							display: true,
+							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
