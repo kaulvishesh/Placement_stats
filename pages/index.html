@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Highlights - IISc DoMS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo" onclick="window.location.href='landing_page.html'" style="cursor: pointer;">
+            <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:56px;">
+            <span>Department of Management Studies, IISc</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="nav-menu">
+            <li><a href="landing_page.html"><i class="fas fa-history"></i> Our Journey</a></li>
+            <li><a href="index.html" class="active"><i class="fas fa-chart-bar"></i> Placement Highlights</a></li>
+            <li><a href="recruiter-insights.html"><i class="fas fa-briefcase"></i> Internship Highlights</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Placement Highlights</h1>
+
+        <!-- Hero Section with Key Metrics -->
+        <div class="overview">
+            <div class="stat-card animate-fade-in-up">
+                <h3>Median Package</h3>
+                <div class="stat-value">₹24 LPA</div>
+                <div class="stat-description">50th percentile salary</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h3>Average Package</h3>
+                <div class="stat-value">₹27.05 LPA</div>
+                <div class="stat-description">Mean compensation</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h3>Highest Package</h3>
+                <div class="stat-value">₹44.5 LPA</div>
+                <div class="stat-description">Peak offer received</div>
+            </div>
+            <div class="stat-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h3>Mean ROI on Investment</h3>
+                <div class="stat-value">4.5x</div>
+                <div class="stat-description">Return multiple</div>
+            </div>
+        </div>
+
+        <!-- Comprehensive Analytics Dashboard -->
+        <div class="charts-grid">
+            <div class="chart-container animate-fade-in-up">
+                <h2><i class="fas fa-chart-bar"></i> Package Distribution</h2>
+                <canvas id="packageChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h2><i class="fas fa-pie-chart"></i> Sector-wise Placement</h2>
+                <canvas id="sectorChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
+                <h2><i class="fas fa-chart-line"></i> Salary Trends Over Years</h2>
+                <canvas id="salaryTrendsChart"></canvas>
+            </div>
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.3s;">
+                <h2><i class="fas fa-building"></i> Top Recruiting Companies</h2>
+                <canvas id="companyChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Why Recruit from IISc DoMS -->
+        <div style="margin-top: var(--space-3xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-handshake" style="color: var(--primary-blue);"></i>
+                Why Recruit from IISc DoMS?
+            </h2>
+
+            <div class="charts-grid">
+                <div class="chart-container text-only animate-fade-in-up">
+                    <h2><i class="fas fa-star"></i> Academic Excellence</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Top-tier Institution:</strong> IISc is India's premier research institute</li>
+                            <li><strong>Rigorous Curriculum:</strong> Blend of theory and practical application</li>
+                            <li><strong>Research Focus:</strong> Students trained in analytical thinking</li>
+                            <li><strong>Faculty Excellence:</strong> World-class professors and industry experts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h2><i class="fas fa-users"></i> Student Profile</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Diverse Backgrounds:</strong> Engineering, Science, and Management</li>
+                            <li><strong>High Achievers:</strong> Top percentile students from across India</li>
+                            <li><strong>Global Perspective:</strong> International exposure and collaborations</li>
+                            <li><strong>Leadership Skills:</strong> Proven track record in various domains</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h2><i class="fas fa-rocket"></i> Career Readiness</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Industry Projects:</strong> Real-world problem solving experience</li>
+                            <li><strong>Internship Programs:</strong> Hands-on industry exposure</li>
+                            <li><strong>Soft Skills:</strong> Communication and teamwork excellence</li>
+                            <li><strong>Innovation Mindset:</strong> Entrepreneurial and creative thinking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Courses Offered Section -->
+        <div style="margin-top: var(--space-3xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-book-open" style="color: var(--primary-blue);"></i>
+                Courses Offered
+            </h2>
+
+            <div class="charts-grid">
+                <div class="chart-container text-only animate-fade-in-up">
+                    <h2><i class="fas fa-calculator"></i> Quantitative Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Options, Futures & Derivatives:</strong> Advanced financial instruments</li>
+                            <li><strong>Applied Statistics:</strong> Statistical methods for business</li>
+                            <li><strong>Time Series & Regression:</strong> Forecasting and analysis</li>
+                            <li><strong>Probability Theory:</strong> Mathematical foundations</li>
+                            <li><strong>Linear Programming:</strong> Optimization techniques</li>
+                            <li><strong>Research Methodology:</strong> Scientific research methods</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <h2><i class="fas fa-brain"></i> Data Science Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Machine Learning:</strong> AI algorithms and applications</li>
+                            <li><strong>Deep Learning for NLP:</strong> Neural networks for language</li>
+                            <li><strong>Bayesian Learning:</strong> Probabilistic machine learning</li>
+                            <li><strong>Game Theory:</strong> Strategic decision making</li>
+                            <li><strong>Stochastic Processes:</strong> Random system modeling</li>
+                            <li><strong>Random Processes:</strong> Statistical signal processing</li>
+                            <li><strong>Scalable Systems:</strong> Large-scale system design</li>
+                            <li><strong>Modeling and Simulation:</strong> System analysis tools</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container text-only animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h2><i class="fas fa-chart-line"></i> Analytics Core</h2>
+                    <div class="recruitment-info">
+                        <ul>
+                            <li><strong>Operations Research:</strong> Mathematical optimization</li>
+                            <li><strong>Marketing Analytics:</strong> Consumer behavior analysis</li>
+                            <li><strong>Econometrics:</strong> Economic data analysis</li>
+                            <li><strong>Strategic Management:</strong> Business strategy formulation</li>
+                            <li><strong>Data Mining:</strong> Pattern discovery in data</li>
+                            <li><strong>Decision Models:</strong> Analytical decision frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Past Recruiters Rolling Belt -->
+        <div style="margin-top: var(--space-3xl);">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-handshake" style="color: var(--primary-blue);"></i>
+                Past Recruiters
+            </h2>
+
+            <div class="logo-belt-container">
+                <div class="logo-belt">
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/amazon.png" alt="Amazon">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/accenture.png" alt="Accenture">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/jpmc.png" alt="JP Morgan Chase">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/target.png" alt="Target">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/uber.png" alt="Uber">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/wells.png" alt="Wells Fargo">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/zs.png" alt="ZS Associates">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/fidelity.png" alt="Fidelity">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/honeywell.png" alt="Honeywell">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/hp.png" alt="HP">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/ssga.png" alt="State Street Global Advisors">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/netradyne.png" alt="Netradyne">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/cocoblu.png" alt="CocoBlu">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/routematic.jpg" alt="Routematic">
+                    </div>
+
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/amazon.png" alt="Amazon">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/accenture.png" alt="Accenture">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/jpmc.png" alt="JP Morgan Chase">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/target.png" alt="Target">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/uber.png" alt="Uber">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/wells.png" alt="Wells Fargo">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/zs.png" alt="ZS Associates">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/fidelity.png" alt="Fidelity">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/honeywell.png" alt="Honeywell">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/hp.png" alt="HP">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/ssga.png" alt="State Street Global Advisors">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/netradyne.png" alt="Netradyne">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/cocoblu.png" alt="CocoBlu">
+                    </div>
+                    <div class="logo-item">
+                        <img src="../assets/company-logos/routematic.jpg" alt="Routematic">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="flex justify-center gap-lg" style="margin-top: var(--space-2xl);">
+            <a href="landing_page.html" class="btn btn-primary">
+                <i class="fas fa-history"></i>
+                Our Journey
+            </a>
+            <a href="recruiter-insights.html" class="btn btn-secondary">
+                <i class="fas fa-briefcase"></i>
+                Internship Highlights
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+                <i class="fas fa-envelope"></i>
+                Contact Us
+            </a>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            menu.classList.toggle('mobile-menu-open');
+
+            // Update toggle button icon
+            const icon = toggle.querySelector('i');
+            if (menu.classList.contains('mobile-menu-open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Close mobile menu when clicking outside or on a link
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            // Close menu if clicking outside nav or on a nav link
+            if (!nav.contains(event.target) || event.target.closest('nav ul li a')) {
+                menu.classList.remove('mobile-menu-open');
+                const icon = toggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Prevent menu from closing when clicking on the menu itself
+        document.getElementById('nav-menu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-blue); color: white; padding: var(--space-lg) var(--space-md); margin-top: var(--space-2xl);">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <div style="margin-bottom: var(--space-sm);">
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: var(--space-xs); color: white;">Department of Management Studies</h3>
+                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Indian Institute of Science, Bangalore</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-sm);">
+                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; margin-bottom: var(--space-xs);">© 2025 Department of Management Studies, IISc. All rights reserved.</p>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.75rem;">Made by Ujjawal, Paarth, Gulshan, Vishesh</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
