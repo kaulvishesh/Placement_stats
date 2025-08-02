@@ -87,7 +87,15 @@
 					x: {
 						beginAtZero: true,
 						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } }
+						ticks: {
+							font: { weight: '500' },
+							stepSize: 1
+						},
+						title: {
+							display: true,
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
 					},
 					y: {
 						grid: { display: false },
@@ -147,7 +155,15 @@
 					x: {
 						beginAtZero: true,
 						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } }
+						ticks: {
+							font: { weight: '500' },
+							stepSize: 1
+						},
+						title: {
+							display: true,
+							text: 'Number of Students',
+							font: { weight: '600' }
+						}
 					},
 					y: {
 						grid: { display: false },

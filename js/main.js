@@ -47,22 +47,18 @@
 					label: 'Number of Students',
 					data: [3, 4, 2, 1],
 					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(236, 72, 153, 0.8)'
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(16, 185, 129, 0.7)',
+						'rgba(245, 158, 11, 0.7)',
+						'rgba(239, 68, 68, 0.7)'
 					],
 					borderColor: [
 						'rgb(59, 130, 246)',
 						'rgb(16, 185, 129)',
 						'rgb(245, 158, 11)',
-						'rgb(239, 68, 68)',
-						'rgb(139, 92, 246)',
-						'rgb(236, 72, 153)'
+						'rgb(239, 68, 68)'
 					],
-					borderWidth: 2,
+					borderWidth: 1,
 					borderRadius: {
 						topLeft: 8,
 						topRight: 8
@@ -131,12 +127,12 @@
 				datasets: [{
 					data: [4, 3, 1, 2],
 					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(236, 72, 153, 0.8)'
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(16, 185, 129, 0.7)',
+						'rgba(245, 158, 11, 0.7)',
+						'rgba(239, 68, 68, 0.7)',
+						'rgba(139, 92, 246, 0.7)',
+						'rgba(236, 72, 153, 0.7)'
 					],
 					borderColor: [
 						'rgb(59, 130, 246)',
@@ -146,7 +142,7 @@
 						'rgb(139, 92, 246)',
 						'rgb(236, 72, 153)'
 					],
-					borderWidth: 3,
+					borderWidth: 2,
 					hoverOffset: 10
 				}]
 			},
@@ -197,21 +193,22 @@
 		createChart('companyChart', {
 			type: 'bar',
 			data: {
-				labels: ['JPMC', 'Wells Fargo', 'NetraDyne', 'RouteMatic', 'Societe Generales', 'Niveta Systems'],
+				labels: ['JP Morgan', 'Wells Fargo', 'NetraDyne', 'RouteMatic', 'Societe Generale', 'Nuware Systems', 'Connect Secure'],
 				datasets: [{
 					label: 'Number of Hires',
-					data: [1, 2, 2, 1, 1, 1],
+					data: [1, 2, 2, 1, 1, 1, 1],
 					backgroundColor: [
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(16, 185, 129, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(239, 68, 68, 0.8)',
-						'rgba(139, 92, 246, 0.8)',
-						'rgba(236, 72, 153, 0.8)',
-						'rgba(34, 197, 94, 0.8)',
-						'rgba(168, 85, 247, 0.8)',
-						'rgba(251, 146, 60, 0.8)',
-						'rgba(14, 165, 233, 0.8)'
+						'rgba(59, 130, 246, 0.7)',
+						'rgba(16, 185, 129, 0.7)',
+						'rgba(245, 158, 11, 0.7)',
+						'rgba(239, 68, 68, 0.7)',
+						'rgba(139, 92, 246, 0.7)',
+						'rgba(236, 72, 153, 0.7)',
+						'rgba(34, 197, 94, 0.7)',
+						'rgba(168, 85, 247, 0.7)',
+						'rgba(251, 146, 60, 0.7)',
+						'rgba(14, 165, 233, 0.7)',
+						'rgba(255, 105, 97, 0.7)'
 					],
 					borderColor: [
 						'rgb(59, 130, 246)',
@@ -223,9 +220,10 @@
 						'rgb(34, 197, 94)',
 						'rgb(168, 85, 247)',
 						'rgb(251, 146, 60)',
-						'rgb(14, 165, 233)'
+						'rgb(14, 165, 233)',
+						'rgb(255, 105, 97)'
 					],
-					borderWidth: 2,
+					borderWidth: 1,
 					borderRadius: 6
 				}]
 			},
@@ -260,7 +258,13 @@
 						ticks: {
 							font: {
 								weight: '500'
-							}
+							},
+							stepSize: 1
+						},
+						title: {
+							display: true,
+							text: 'Number of Students',
+							font: { weight: '600' }
 						}
 					},
 					y: {
@@ -304,22 +308,22 @@
 					label: 'Data Scientist',
 					data: [22, 1, 3, 23.5],
 					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.2)',
-					borderWidth: 2,
+					backgroundColor: 'rgba(59, 130, 246, 0.1)',
+					borderWidth: 1,
 					pointBackgroundColor: 'rgb(59, 130, 246)'
 				}, {
 					label: 'Quant Analyst',
 					data: [26.5, 4, 5, 38.5],
 					borderColor: 'rgb(16, 185, 129)',
-					backgroundColor: 'rgba(16, 185, 129, 0.2)',
-					borderWidth: 2,
+					backgroundColor: 'rgba(16, 185, 129, 0.1)',
+					borderWidth: 1,
 					pointBackgroundColor: 'rgb(16, 185, 129)'
 				}, {
 					label: 'Data Analyst',
 					data: [18, 1, 1, 20.5],
 					borderColor: 'rgb(245, 158, 11)',
-					backgroundColor: 'rgba(245, 158, 11, 0.2)',
-					borderWidth: 2,
+					backgroundColor: 'rgba(245, 158, 11, 0.1)',
+					borderWidth: 1,
 					pointBackgroundColor: 'rgb(245, 158, 11)'
 				}]
 			},
@@ -345,24 +349,29 @@
 
 		// Salary Trends Chart
 		createChart('salaryTrendsChart', {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: ['2023', '2024', '2025'],
 				datasets: [{
 					label: 'Average Package',
 					data: [27.3, 23.3, 27.05],
+					backgroundColor: 'rgba(59, 130, 246, 0.7)',
 					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4
+					borderWidth: 1,
+					borderRadius: {
+						topLeft: 6,
+						topRight: 6
+					}
 				}, {
 					label: 'Median Package',
 					data: [28.8, 20, 24.0],
+					backgroundColor: 'rgba(16, 185, 129, 0.7)',
 					borderColor: 'rgb(16, 185, 129)',
-					borderWidth: 3,
-					fill: false,
-					tension: 0.4
+					borderWidth: 1,
+					borderRadius: {
+						topLeft: 6,
+						topRight: 6
+					}
 				}]
 			},
 			options: {
