@@ -158,61 +158,43 @@
 			}
 		});
 
-		// Summer Stipend Distribution with KDE Chart
+		// Summer Stipend Distribution Chart
 		createChart('summerStipendDistributionChart', {
 			type: 'bar',
 			data: {
-				labels: ['15K', '25K', '50K', '70K', '75K', '130K'],
+				labels: ['₹15-30K', '₹30-45K', '₹45-60K', '₹60-75K', '₹75-90K', '₹90K+'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [1, 2, 2, 2, 2, 1],
+					data: [3, 2, 8, 6, 3, 1],
 					backgroundColor: [
-						'rgba(245, 158, 11, 0.7)',
+						'rgba(59, 130, 246, 0.8)',
+						'rgba(16, 185, 129, 0.8)',
 						'rgba(245, 158, 11, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(245, 158, 11, 0.8)',
-						'rgba(245, 158, 11, 0.7)'
+						'rgba(239, 68, 68, 0.8)',
+						'rgba(139, 92, 246, 0.8)',
+						'rgba(236, 72, 153, 0.8)'
 					],
-					borderColor: 'rgb(245, 158, 11)',
+					borderColor: [
+						'rgb(59, 130, 246)',
+						'rgb(16, 185, 129)',
+						'rgb(245, 158, 11)',
+						'rgb(239, 68, 68)',
+						'rgb(139, 92, 246)',
+						'rgb(236, 72, 153)'
+					],
 					borderWidth: 2,
 					borderRadius: {
 						topLeft: 8,
 						topRight: 8
-					},
-					yAxisID: 'y'
-				}, {
-					label: 'KDE Curve',
-					type: 'line',
-					data: [0.8, 1.8, 2.2, 2.1, 1.9, 0.9],
-					borderColor: 'rgb(239, 68, 68)',
-					backgroundColor: 'rgba(239, 68, 68, 0.1)',
-					borderWidth: 3,
-					fill: false,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(239, 68, 68)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 2,
-					pointRadius: 5,
-					pointHoverRadius: 7,
-					yAxisID: 'y1'
+					}
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
-				interaction: {
-					mode: 'index',
-					intersect: false,
-				},
 				plugins: {
 					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true,
-							font: { weight: '500' },
-							padding: 15
-						}
+						display: false
 					},
 					tooltip: {
 						backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -223,39 +205,27 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								if (context.datasetIndex === 0) {
-									return `${context.parsed.y} students`;
-								} else {
-									return `Density: ${context.parsed.y.toFixed(1)}`;
-								}
+								return `Students: ${context.parsed.y}`;
+							},
+							afterLabel: function (context) {
+								const total = context.dataset.data.reduce((a, b) => a + b, 0);
+								const percentage = ((context.parsed.y / total) * 100).toFixed(1);
+								return `Percentage: ${percentage}%`;
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
-						type: 'linear',
-						display: true,
-						position: 'left',
 						beginAtZero: true,
-						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } },
+						grid: { color: 'rgba(0, 0, 0, 0.1)' },
+						ticks: {
+							font: { weight: '500' },
+							stepSize: 1
+						},
 						title: {
 							display: true,
 							text: 'Number of Students',
-							font: { weight: '600' }
-						}
-					},
-					y1: {
-						type: 'linear',
-						display: true,
-						position: 'right',
-						beginAtZero: true,
-						grid: { drawOnChartArea: false },
-						ticks: { font: { weight: '500' } },
-						title: {
-							display: true,
-							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
@@ -264,7 +234,7 @@
 						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Summer Stipend Range',
+							text: 'Monthly Stipend Range',
 							font: { weight: '600' }
 						}
 					}
@@ -273,63 +243,43 @@
 			}
 		});
 
-		// Winter Stipend Distribution with KDE Chart
+		// Winter Stipend Distribution Chart
 		createChart('winterStipendDistributionChart', {
 			type: 'bar',
 			data: {
-				labels: ['50K', '60K', '75K', '100K', '110K', '120K', '150K', '200K'],
+				labels: ['₹50-70K', '₹70-90K', '₹90-110K', '₹110-130K', '₹130-150K', '₹150K+'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [2, 1, 2, 1, 1, 1, 2, 1],
+					data: [2, 3, 5, 4, 2, 2],
 					backgroundColor: [
+						'rgba(16, 185, 129, 0.8)',
 						'rgba(59, 130, 246, 0.8)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.8)',
-						'rgba(59, 130, 246, 0.7)'
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(239, 68, 68, 0.8)',
+						'rgba(139, 92, 246, 0.8)',
+						'rgba(236, 72, 153, 0.8)'
 					],
-					borderColor: 'rgb(59, 130, 246)',
+					borderColor: [
+						'rgb(16, 185, 129)',
+						'rgb(59, 130, 246)',
+						'rgb(245, 158, 11)',
+						'rgb(239, 68, 68)',
+						'rgb(139, 92, 246)',
+						'rgb(236, 72, 153)'
+					],
 					borderWidth: 2,
 					borderRadius: {
 						topLeft: 8,
 						topRight: 8
-					},
-					yAxisID: 'y'
-				}, {
-					label: 'KDE Curve',
-					type: 'line',
-					data: [1.8, 1.2, 1.9, 1.1, 1.0, 1.1, 1.8, 0.9],
-					borderColor: 'rgb(16, 185, 129)',
-					backgroundColor: 'rgba(16, 185, 129, 0.1)',
-					borderWidth: 3,
-					fill: false,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(16, 185, 129)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 2,
-					pointRadius: 5,
-					pointHoverRadius: 7,
-					yAxisID: 'y1'
+					}
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
-				interaction: {
-					mode: 'index',
-					intersect: false,
-				},
 				plugins: {
 					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true,
-							font: { weight: '500' },
-							padding: 15
-						}
+						display: false
 					},
 					tooltip: {
 						backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -340,39 +290,27 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								if (context.datasetIndex === 0) {
-									return `${context.parsed.y} students`;
-								} else {
-									return `Density: ${context.parsed.y.toFixed(1)}`;
-								}
+								return `Students: ${context.parsed.y}`;
+							},
+							afterLabel: function (context) {
+								const total = context.dataset.data.reduce((a, b) => a + b, 0);
+								const percentage = ((context.parsed.y / total) * 100).toFixed(1);
+								return `Percentage: ${percentage}%`;
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
-						type: 'linear',
-						display: true,
-						position: 'left',
 						beginAtZero: true,
-						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } },
+						grid: { color: 'rgba(0, 0, 0, 0.1)' },
+						ticks: {
+							font: { weight: '500' },
+							stepSize: 1
+						},
 						title: {
 							display: true,
 							text: 'Number of Students',
-							font: { weight: '600' }
-						}
-					},
-					y1: {
-						type: 'linear',
-						display: true,
-						position: 'right',
-						beginAtZero: true,
-						grid: { drawOnChartArea: false },
-						ticks: { font: { weight: '500' } },
-						title: {
-							display: true,
-							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
@@ -381,7 +319,7 @@
 						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Winter Stipend Range',
+							text: 'Monthly Stipend Range',
 							font: { weight: '600' }
 						}
 					}

@@ -38,61 +38,43 @@
 			return window.chartInstances[canvasId];
 		}
 
-		// Enhanced Package Distribution Chart with KDE Overlay
+		// Package Distribution Chart
 		createChart('packageChart', {
 			type: 'bar',
 			data: {
-				labels: ['17 LPA', '21 LPA', '22 LPA', '24 LPA', '35 LPA', '44.5 LPA'],
+				labels: ['₹15-20 LPA', '₹20-25 LPA', '₹25-30 LPA', '₹30-35 LPA', '₹35-40 LPA', '₹40+ LPA'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [1, 1, 1, 4, 2, 1],
+					data: [4, 6, 8, 5, 3, 2],
 					backgroundColor: [
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 0.7)',
-						'rgba(59, 130, 246, 1.0)',
 						'rgba(59, 130, 246, 0.8)',
-						'rgba(59, 130, 246, 0.7)'
+						'rgba(16, 185, 129, 0.8)',
+						'rgba(245, 158, 11, 0.8)',
+						'rgba(239, 68, 68, 0.8)',
+						'rgba(139, 92, 246, 0.8)',
+						'rgba(236, 72, 153, 0.8)'
 					],
-					borderColor: 'rgb(59, 130, 246)',
+					borderColor: [
+						'rgb(59, 130, 246)',
+						'rgb(16, 185, 129)',
+						'rgb(245, 158, 11)',
+						'rgb(239, 68, 68)',
+						'rgb(139, 92, 246)',
+						'rgb(236, 72, 153)'
+					],
 					borderWidth: 2,
 					borderRadius: {
 						topLeft: 8,
 						topRight: 8
-					},
-					yAxisID: 'y'
-				}, {
-					label: 'KDE Curve',
-					type: 'line',
-					data: [0.8, 0.9, 1.0, 3.5, 2.2, 0.9],
-					borderColor: 'rgb(239, 68, 68)',
-					backgroundColor: 'rgba(239, 68, 68, 0.1)',
-					borderWidth: 3,
-					fill: false,
-					tension: 0.4,
-					pointBackgroundColor: 'rgb(239, 68, 68)',
-					pointBorderColor: 'white',
-					pointBorderWidth: 2,
-					pointRadius: 5,
-					pointHoverRadius: 7,
-					yAxisID: 'y1'
+					}
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
-				interaction: {
-					mode: 'index',
-					intersect: false,
-				},
 				plugins: {
 					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true,
-							font: { weight: '500' },
-							padding: 15
-						}
+						display: false
 					},
 					tooltip: {
 						backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -103,39 +85,27 @@
 						cornerRadius: 8,
 						callbacks: {
 							label: function (context) {
-								if (context.datasetIndex === 0) {
-									return `${context.parsed.y} students placed`;
-								} else {
-									return `Density: ${context.parsed.y.toFixed(1)}`;
-								}
+								return `Students: ${context.parsed.y}`;
+							},
+							afterLabel: function (context) {
+								const total = context.dataset.data.reduce((a, b) => a + b, 0);
+								const percentage = ((context.parsed.y / total) * 100).toFixed(1);
+								return `Percentage: ${percentage}%`;
 							}
 						}
 					}
 				},
 				scales: {
 					y: {
-						type: 'linear',
-						display: true,
-						position: 'left',
 						beginAtZero: true,
-						grid: { color: 'rgba(0, 0, 0, 0.05)' },
-						ticks: { font: { weight: '500' } },
+						grid: { color: 'rgba(0, 0, 0, 0.1)' },
+						ticks: {
+							font: { weight: '500' },
+							stepSize: 1
+						},
 						title: {
 							display: true,
 							text: 'Number of Students',
-							font: { weight: '600' }
-						}
-					},
-					y1: {
-						type: 'linear',
-						display: true,
-						position: 'right',
-						beginAtZero: true,
-						grid: { drawOnChartArea: false },
-						ticks: { font: { weight: '500' } },
-						title: {
-							display: true,
-							text: 'Density',
 							font: { weight: '600' }
 						}
 					},
@@ -144,7 +114,7 @@
 						ticks: { font: { weight: '500' } },
 						title: {
 							display: true,
-							text: 'Package Range',
+							text: 'Annual Package Range',
 							font: { weight: '600' }
 						}
 					}
