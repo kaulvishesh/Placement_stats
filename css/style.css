@@ -398,8 +398,8 @@ h3 {
 }
 
 .charts-grid-triangle .chart-container.text-only {
-    min-height: 450px !important;
-    height: 450px !important;
+    min-height: 350px !important;
+    height: auto !important;
 }
 
 .chart-container {
@@ -425,9 +425,9 @@ h3 {
     width: 100% !important;
 }
 
-/* Text-only containers - set consistent height */
+/* Text-only containers - set consistent minimum height but allow expansion */
 .chart-container.text-only {
-    min-height: 450px !important;
+    min-height: 350px !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1393,6 +1393,47 @@ h3 {
     box-shadow: var(--shadow-md);
 }
 
+/* Timeline Content Formatting */
+.timeline-item p {
+    text-align: justify !important;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-item ul {
+    text-align: justify !important;
+    line-height: 1.6;
+    margin: 0.75rem 0;
+}
+
+.timeline-item li {
+    text-align: justify !important;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item h3 {
+    text-align: center !important;
+    margin-bottom: 0.75rem;
+}
+
+/* Ensure consistent padding and spacing */
+.timeline-item .bg-white {
+    padding: 1.5rem !important;
+    text-align: justify;
+}
+
+/* Override any conflicting text alignment */
+.timeline-item-left .bg-white,
+.timeline-item-right .bg-white {
+    text-align: justify !important;
+}
+
+.timeline-item-left .bg-white h3,
+.timeline-item-right .bg-white h3 {
+    text-align: center !important;
+}
+
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .team-contact {
@@ -1403,5 +1444,11 @@ h3 {
 
     .email-copy {
         font-size: 0.85rem;
+    }
+
+    .timeline-item p,
+    .timeline-item ul,
+    .timeline-item li {
+        text-align: justify !important;
     }
 }
