@@ -6,12 +6,12 @@
 }
 
 :root {
-    /* Color Palette */
-    --primary-blue: #1e40af;
+    /* Color Palette - Brighter and More Vibrant */
+    --primary-blue: #2563eb;
     --secondary-blue: #3b82f6;
     --accent-blue: #60a5fa;
     --light-blue: #dbeafe;
-    --dark-blue: #1e3a8a;
+    --dark-blue: #1d4ed8;
 
     --primary-green: #059669;
     --secondary-green: #10b981;
@@ -19,6 +19,12 @@
 
     --primary-purple: #7c3aed;
     --secondary-purple: #8b5cf6;
+
+    /* Additional Vibrant Colors */
+    --accent-pink: #ec4899;
+    --accent-cyan: #06b6d4;
+    --accent-orange: #ea580c;
+    --accent-yellow: #eab308;
 
     --neutral-50: #f8fafc;
     --neutral-100: #f1f5f9;
