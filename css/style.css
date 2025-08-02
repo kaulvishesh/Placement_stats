@@ -376,22 +376,38 @@ h3 {
     align-items: start;
 }
 
-/* Triangle/Pyramid layout for 3 items - third item centered in second row */
+/* Triangle/Pyramid layout for 3 items - always 3 columns in web view */
 .charts-grid-triangle {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
-    margin-top: var(--space-3xl);
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl, 2rem);
+    margin-bottom: var(--space-2xl, 3rem);
 }
 
+/* Remove centering for the third card in web view */
 .charts-grid-triangle > *:nth-child(3) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    margin: 0 auto;
+    grid-column: auto;
+    margin: 0;
 }
 
-/* Ensure equal heights for triangle grid items */
+/* Responsive: stack cards vertically on mobile */
+@media (max-width: 900px) {
+    .charts-grid-triangle {
+        grid-template-columns: 1fr;
+    }
+    .charts-grid-triangle > *:nth-child(3) {
+        grid-column: auto;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .chart-container.text-only {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto var(--space-xl, 2rem);
+    }
+}
+
 .charts-grid-triangle > * {
     display: flex;
     flex-direction: column;
@@ -861,6 +877,18 @@ h3 {
 
     .team-member {
         padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 900px) {
+    .team-member-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-member-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1450,5 +1478,60 @@ h3 {
     .timeline-item ul,
     .timeline-item li {
         text-align: justify !important;
+    }
+}
+
+/* Responsive triangle grid for excellence cards */
+.charts-grid-triangle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl, 2rem);
+    margin-bottom: var(--space-2xl, 3rem);
+}
+
+@media (max-width: 900px) {
+    .charts-grid-triangle {
+        grid-template-columns: 1fr;
+    }
+    .chart-container.text-only {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto var(--space-xl, 2rem);
+    }
+}
+
+/* Ensure text wraps and is visible */
+.chart-container.text-only h2,
+.chart-container.text-only p,
+.chart-container.text-only ul,
+.chart-container.text-only li {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    flex: 1 1 350px;
+    min-width: 220px;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .testimonials-container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    .testimonial {
+        min-width: 0;
+        width: 100%;
+        padding: var(--space-md);
     }
 }

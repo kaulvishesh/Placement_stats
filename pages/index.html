@@ -57,10 +57,10 @@
         <div class="chart-container text-only animate-fade-in-up" style="margin: var(--space-3xl) 0;">
             <h2><i class="fas fa-bullseye"></i> The Story Behind Our Success</h2>
             <div class="recruitment-info">
-                <p><strong>These numbers represent more than statistics</strong> - they showcase the unique value proposition of IISc DoMS graduates in the competitive data science landscape.</p>
+                <p><strong>These numbers represent more than statistics</strong> - they showcase the unique value proposition of IISc DoMS graduates in the competitive <strong>Data & AI</strong> landscape.</p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg);">
                     <div>
-                        <h4 style="color: var(--primary-blue); margin-bottom: var(--space-sm);"><i class="fas fa-award"></i> 75+ Years of Excellence</h4>
+                        <h4 style="color: var(--primary-blue); margin-bottom: var(--space-sm);"><i class="fas fa-award"></i> 70+ Years of Excellence</h4>
                         <p><strong>"IISc has been at the core of India's management training programme"</strong> - Business Today. Since 1948, we've trained leaders for HAL, ISRO, and top corporations.</p>
                     </div>
                     <div>
@@ -69,7 +69,7 @@
                     </div>
                     <div>
                         <h4 style="color: var(--primary-blue); margin-bottom: var(--space-sm);"><i class="fas fa-rocket"></i> "Quant to the Core"</h4>
-                        <p>As Business Today noted: "Engineers can pick up soft skills, but non-engineers cannot adapt to quant-based, data-driven study." We produce the rare combination.</p>
+                        <p>As Business Today noted: "We produce the rare combination of <strong>Engineering Managers</strong> who have both the soft skills and a quant-based, data-driven approach towards problem solving."</p>
                     </div>
                 </div>
             </div>
@@ -81,9 +81,9 @@
                 <h2><i class="fas fa-chart-bar"></i> Package Distribution</h2>
                 <canvas id="packageChart"></canvas>
             </div>
-            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.1s; min-width:350px; min-height:350px;">
                 <h2><i class="fas fa-pie-chart"></i> Sector-wise Placement</h2>
-                <canvas id="sectorChart"></canvas>
+                <canvas id="sectorChart" width="350" height="350"></canvas>
             </div>
             <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h2><i class="fas fa-chart-line"></i> Salary Trends Over Years</h2>
@@ -154,20 +154,20 @@
             <h2><i class="fas fa-quote-left"></i> Why Top Students Choose IISc DoMS</h2>
             <div class="recruitment-info">
                 <p><strong>Featured in Business Today:</strong> Students who left IIT-Bombay, IIT-Madras, and IIM-Calcutta offers to join us</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-xl); margin-top: var(--space-lg);">
-                    <div style="background: var(--neutral-50); padding: var(--space-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-blue);">
+                <div class="testimonials-container">
+                    <div class="testimonial" style="background: var(--neutral-50); padding: var(--space-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-blue);">
                         <blockquote style="font-style: italic; margin-bottom: var(--space-md);">
                             "The reason why I came here is that the depth of study here at IISc is remarkable."
                         </blockquote>
                         <p><strong>- Priyaratan Mishra</strong><br>
                         <small>Ex-Infosys Business Analyst, chose IISc over IIM-Calcutta</small></p>
                     </div>
-                    <div style="background: var(--neutral-50); padding: var(--space-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--secondary-green);">
+                    <div class="testimonial" style="background: var(--neutral-50); padding: var(--space-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--secondary-green);">
                         <blockquote style="font-style: italic; margin-bottom: var(--space-md);">
                             "I am looking at a techno-managerial role and DoMS is the best place to train me. Could I have taken my electives as mathematics, machine learning and artificial intelligence elsewhere? No. Here I could."
                         </blockquote>
                         <p><strong>- Ashish Kumar</strong><br>
-                        <small>98.8% GATE scorer, chose IISc over IIT-Bombay & IIT-Madras</small></p>
+                        <small>Top GATE scorer, chose IISc over IIT-Bombay & IIT-Madras</small></p>
                     </div>
                 </div>
             </div>
@@ -330,13 +330,13 @@
     <footer style="background: var(--primary-blue); color: white; padding: var(--space-lg) var(--space-md); margin-top: var(--space-2xl);">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
             <div style="margin-bottom: var(--space-sm);">
-                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: var(--space-xs); color: white;">Department of Management Studies</h3>
-                <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">Indian Institute of Science, Bangalore</p>
+                <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:40px; margin-bottom: var(--space-xs);">
             </div>
-            <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: var(--space-sm);">
-                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; margin-bottom: var(--space-xs);">© 2025 Department of Management Studies, IISc. All rights reserved.</p>
-                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.75rem;">Made by Ujjawal, Paarth, Gulshan, Vishesh</p>
-            </div>
+            <p style="font-size: 0.875rem; line-height: 1.25rem;">
+                &copy; 2023 Department of Management Studies, IISc. All rights reserved.<br>
+                <a href="privacy_policy.html" style="color: white; text-decoration: underline;">Privacy Policy</a> | 
+                <a href="terms_of_service.html" style="color: white; text-decoration: underline;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 </body>
