@@ -162,10 +162,10 @@
 		createChart('summerStipendDistributionChart', {
 			type: 'bar',
 			data: {
-				labels: ['₹15-30K', '₹30-45K', '₹45-60K', '₹60-75K', '₹75-90K', '₹90K+'],
+				labels: ['₹15-35K', '₹35-55K', '₹55-75K', '₹75K+'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [3, 2, 8, 6, 3, 1],
+					data: [3, 2, 4, 1],
 					backgroundColor: [
 						'rgba(59, 130, 246, 0.8)',
 						'rgba(16, 185, 129, 0.8)',
@@ -250,7 +250,7 @@
 				labels: ['₹50-70K', '₹70-90K', '₹90-110K', '₹110-130K', '₹130-150K', '₹150K+'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [2, 3, 5, 4, 2, 2],
+					data: [3, 2, 2, 1, 2, 1],
 					backgroundColor: [
 						'rgba(16, 185, 129, 0.8)',
 						'rgba(59, 130, 246, 0.8)',

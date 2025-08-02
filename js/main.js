@@ -42,10 +42,10 @@
 		createChart('packageChart', {
 			type: 'bar',
 			data: {
-				labels: ['₹15-20 LPA', '₹20-25 LPA', '₹25-30 LPA', '₹30-35 LPA', '₹35-40 LPA', '₹40+ LPA'],
+				labels: ['₹15-23 LPA', '₹23-31 LPA', '₹31-39 LPA', '₹39+ LPA'],
 				datasets: [{
 					label: 'Number of Students',
-					data: [4, 6, 8, 5, 3, 2],
+					data: [3, 4, 2, 1],
 					backgroundColor: [
 						'rgba(59, 130, 246, 0.8)',
 						'rgba(16, 185, 129, 0.8)',
