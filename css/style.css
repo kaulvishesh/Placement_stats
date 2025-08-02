@@ -376,6 +376,32 @@ h3 {
     align-items: start;
 }
 
+/* Triangle/Pyramid layout for 3 items - third item centered in second row */
+.charts-grid-triangle {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+    align-items: start;
+}
+
+.charts-grid-triangle > *:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+/* Ensure equal heights for triangle grid items */
+.charts-grid-triangle > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.charts-grid-triangle .chart-container.text-only {
+    min-height: 450px !important;
+    height: 450px !important;
+}
+
 .chart-container {
     background: white;
     padding: var(--space-xl);
@@ -399,10 +425,12 @@ h3 {
     width: 100% !important;
 }
 
-/* Text-only containers override to be dynamic */
+/* Text-only containers - set consistent height */
 .chart-container.text-only {
-    min-height: auto !important;
+    min-height: 450px !important;
     height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .chart-container::before {
@@ -1300,5 +1328,80 @@ h3 {
 
     .logo-belt {
         animation-duration: 35s;
+    }
+}
+
+/* Team Contact Styling */
+.team-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.email-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--primary-blue);
+    cursor: pointer;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+}
+
+.email-copy:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.email-copy.copied {
+    background-color: var(--secondary-green);
+    color: white;
+    animation: copySuccess 0.3s ease-out;
+}
+
+@keyframes copySuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #0077b5;
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-size: 1.1rem;
+}
+
+.linkedin-link:hover {
+    background-color: #005885;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .team-contact {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+
+    .email-copy {
+        font-size: 0.85rem;
     }
 }

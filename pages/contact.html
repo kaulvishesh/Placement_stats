@@ -63,6 +63,14 @@
                         <h3>Prof. Shashi Jain</h3>
                         <p class="team-title">Department Chair</p>
                         <p class="team-description">Leading the Department of Management Studies with vision and excellence in management education and research.</p>
+                        <div class="team-contact">
+                            <span class="email-copy" onclick="copyEmail('shashi@iisc.ac.in')" title="Click to copy email">
+                                <i class="fas fa-envelope"></i> shashi@iisc.ac.in
+                            </span>
+                            <a href="https://linkedin.com/in/shashi-jain-iisc" target="_blank" class="linkedin-link" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,7 +91,14 @@
                     <div class="team-info">
                         <h3>Ujjawal Gahoi</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">ujjawalgahoi@iisc.ac.in</p>
+                        <div class="team-contact">
+                            <span class="email-copy" onclick="copyEmail('ujjawalgahoi@iisc.ac.in')" title="Click to copy email">
+                                <i class="fas fa-envelope"></i> ujjawalgahoi@iisc.ac.in
+                            </span>
+                            <a href="https://linkedin.com/in/ujjawal-gahoi" target="_blank" class="linkedin-link" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -94,7 +109,14 @@
                     <div class="team-info">
                         <h3>Gulshan Kumar Alok</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">gulshanalok@iisc.ac.in</p>
+                        <div class="team-contact">
+                            <span class="email-copy" onclick="copyEmail('gulshanalok@iisc.ac.in')" title="Click to copy email">
+                                <i class="fas fa-envelope"></i> gulshanalok@iisc.ac.in
+                            </span>
+                            <a href="https://linkedin.com/in/gulshan-kumar-alok" target="_blank" class="linkedin-link" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -105,7 +127,14 @@
                     <div class="team-info">
                         <h3>Paarth Barkur</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">paarthbarkur@iisc.ac.in</p>
+                        <div class="team-contact">
+                            <span class="email-copy" onclick="copyEmail('paarthbarkur@iisc.ac.in')" title="Click to copy email">
+                                <i class="fas fa-envelope"></i> paarthbarkur@iisc.ac.in
+                            </span>
+                            <a href="https://linkedin.com/in/paarth-barkur" target="_blank" class="linkedin-link" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -116,14 +145,21 @@
                     <div class="team-info">
                         <h3>Vishesh Kaul</h3>
                         <p class="team-title">Placement Coordinator</p>
-                        <p class="team-description">visheshkaul@iisc.ac.in</p>
+                        <div class="team-contact">
+                            <span class="email-copy" onclick="copyEmail('visheshkaul@iisc.ac.in')" title="Click to copy email">
+                                <i class="fas fa-envelope"></i> visheshkaul@iisc.ac.in
+                            </span>
+                            <a href="https://linkedin.com/in/vishesh-kaul" target="_blank" class="linkedin-link" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- Contact Form and Information -->
-        <div class="charts-grid">
+        <div class="charts-grid-triangle">
             <div class="chart-container text-only animate-fade-in-up">
                 <h2><i class="fas fa-envelope"></i> For Recruiters</h2>
                 <div class="contact-info">
@@ -268,6 +304,48 @@
         });
 
     </script>
+
+    <script>
+        // Email copy functionality
+        function copyEmail(email) {
+            navigator.clipboard.writeText(email).then(function() {
+                // Find the clicked element
+                const clickedElement = event.target.closest('.email-copy');
+                const originalText = clickedElement.innerHTML;
+
+                // Show success feedback
+                clickedElement.classList.add('copied');
+                clickedElement.innerHTML = '<i class="fas fa-check"></i> Email Copied!';
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    clickedElement.classList.remove('copied');
+                    clickedElement.innerHTML = originalText;
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy email: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                // Show success feedback
+                const clickedElement = event.target.closest('.email-copy');
+                const originalText = clickedElement.innerHTML;
+                clickedElement.classList.add('copied');
+                clickedElement.innerHTML = '<i class="fas fa-check"></i> Email Copied!';
+
+                setTimeout(() => {
+                    clickedElement.classList.remove('copied');
+                    clickedElement.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+
     <script>
       // Placement Coordinator click easter egg
       let clickCount = 0;
