@@ -175,7 +175,7 @@
 						callbacks: {
 							label: function (context) {
 								const percentage = ((context.parsed / context.dataset.data.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
-								return `${context.label}: ${context.parsed}% (${percentage}% of placements)`;
+								return `${context.label}: (${percentage}% of placements)`;
 							}
 						}
 					}
@@ -299,48 +299,64 @@
 
 
 
-		// Role-wise Salary Radar Chart
+		// Role Distribution Radar Chart
 		createChart('roleSalaryRadarChart', {
 			type: 'radar',
 			data: {
-				labels: ['Base Salary', 'Bonus', 'Stock Options', 'Total Compensation'],
+				labels: [
+					'Data Scientist',
+					'Business Analyst',
+					'Product Manager',
+					'Consultant',
+					'Quant Analyst',
+					'ML Engineer',
+					'Strategy Analyst',
+					'Operations Manager',
+					'Risk Analyst',
+					'Technology Analyst'
+				],
 				datasets: [{
-					label: 'Data Scientist',
-					data: [22, 1, 3, 23.5],
-					borderColor: 'rgb(59, 130, 246)',
-					backgroundColor: 'rgba(59, 130, 246, 0.1)',
-					borderWidth: 1,
-					pointBackgroundColor: 'rgb(59, 130, 246)'
-				}, {
-					label: 'Quant Analyst',
-					data: [26.5, 4, 5, 38.5],
-					borderColor: 'rgb(16, 185, 129)',
-					backgroundColor: 'rgba(16, 185, 129, 0.1)',
-					borderWidth: 1,
-					pointBackgroundColor: 'rgb(16, 185, 129)'
-				}, {
-					label: 'Data Analyst',
-					data: [18, 1, 1, 20.5],
-					borderColor: 'rgb(245, 158, 11)',
-					backgroundColor: 'rgba(245, 158, 11, 0.1)',
-					borderWidth: 1,
-					pointBackgroundColor: 'rgb(245, 158, 11)'
+					label: 'Number of Placements',
+					data: [4, 3, 2, 3, 2, 3, 2, 1, 1, 1],
+					borderColor: 'rgb(37, 99, 235)',
+					backgroundColor: 'rgba(37, 99, 235, 0.2)',
+					borderWidth: 2,
+					pointBackgroundColor: 'rgb(37, 99, 235)',
+					pointBorderColor: 'white',
+					pointBorderWidth: 2,
+					pointRadius: 5,
+					pointHoverRadius: 7
 				}]
 			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
 				plugins: {
-					legend: {
-						position: 'top',
-						labels: { usePointStyle: true, font: { weight: '500' } }
+					legend: { display: false },
+					tooltip: {
+						backgroundColor: 'rgba(0, 0, 0, 0.8)',
+						titleColor: 'white',
+						bodyColor: 'white',
+						borderColor: 'rgba(255, 255, 255, 0.1)',
+						borderWidth: 1,
+						cornerRadius: 8
 					}
 				},
 				scales: {
 					r: {
 						beginAtZero: true,
-						max: 60,
-						grid: { color: 'rgba(0, 0, 0, 0.1)' }
+						max: 5,
+						grid: { color: 'rgba(0, 0, 0, 0.1)' },
+						angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+						ticks: {
+							font: { size: 10, weight: '500' },
+							stepSize: 1,
+							backdropColor: 'transparent'
+						},
+						pointLabels: {
+							font: { size: 11, weight: '600' },
+							color: '#374151'
+						}
 					}
 				},
 				animation: { duration: 2000, easing: 'easeOutQuart' }

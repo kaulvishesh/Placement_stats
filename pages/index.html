@@ -75,8 +75,28 @@
             </div>
         </div>
 
+        <!-- Role Distribution Section -->
+        <div style="margin: var(--space-3xl) 0;">
+            <h2 style="text-align: center; color: var(--neutral-800); font-size: 2rem; font-weight: 700; margin-bottom: var(--space-xl);">
+                <i class="fas fa-users" style="color: var(--primary-blue);"></i>
+                Diverse Career Paths
+            </h2>
+            <div class="roles-showcase">
+                <div class="role-item">Data Scientist</div>
+                <div class="role-item">Business Analyst</div>
+                <div class="role-item">Product Manager</div>
+                <div class="role-item">Consultant</div>
+                <div class="role-item">Quant Analyst</div>
+                <div class="role-item">ML Engineer</div>
+                <div class="role-item">Strategy Analyst</div>
+                <div class="role-item">Operations Manager</div>
+                <div class="role-item">Risk Analyst</div>
+                <div class="role-item">Technology Analyst</div>
+            </div>
+        </div>
+
         <!-- Comprehensive Analytics Dashboard -->
-        <div class="charts-grid">
+        <div class="charts-grid-triangle">
             <div class="chart-container animate-fade-in-up">
                 <h2><i class="fas fa-chart-bar"></i> Package Distribution</h2>
                 <canvas id="packageChart"></canvas>
@@ -88,10 +108,6 @@
             <div class="chart-container animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h2><i class="fas fa-chart-line"></i> Salary Trends Over Years</h2>
                 <canvas id="salaryTrendsChart"></canvas>
-            </div>
-            <div class="chart-container animate-fade-in-up" style="animation-delay: 0.3s;">
-                <h2><i class="fas fa-building"></i> Top Recruiting Companies</h2>
-                <canvas id="companyChart"></canvas>
             </div>
         </div>
 
@@ -325,18 +341,18 @@
         });
     </script>
 
-    <!-- Footer -->
-    <footer style="background: var(--primary-blue); color: white; padding: var(--space-lg) var(--space-md); margin-top: var(--space-2xl);">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <div style="margin-bottom: var(--space-sm);">
-                <img src="../assets/logo.png" alt="IISc DoMS Logo" style="height:40px; margin-bottom: var(--space-xs);">
-            </div>
-            <p style="font-size: 0.875rem; line-height: 1.25rem;">
-                &copy; 2023 Department of Management Studies, IISc. All rights reserved.<br>
-                <a href="privacy_policy.html" style="color: white; text-decoration: underline;">Privacy Policy</a> | 
-                <a href="terms_of_service.html" style="color: white; text-decoration: underline;">Terms of Service</a>
-            </p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer style="background: #1e3a8a; color: white; padding: 1rem; margin-top: 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div style="margin-bottom: 0.75rem;">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; color: white;">Department of Management Studies</h3>
+        <p style="color: #bfdbfe; font-size: 0.875rem;">Indian Institute of Science, Bangalore</p>
+      </div>
+      <div style="border-top: 1px solid #1e40af; padding-top: 0.75rem;">
+        <p style="color: #93c5fd; font-size: 0.875rem; margin-bottom: 0.25rem;">© 2025 Department of Management Studies, IISc. All rights reserved.</p>
+        <p style="color: #60a5fa; font-size: 0.75rem;">Made by Ujjawal, Paarth, Gulshan, Vishesh</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
